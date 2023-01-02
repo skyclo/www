@@ -1,0 +1,11 @@
+node_modules
+package-lock.json
+
+build
+public/build
+.env
+
+app/styles/app.css
+
+api
+functions
