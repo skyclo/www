@@ -1,7 +1,7 @@
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from "@remix-run/react"
 
 // TailwindCSS
-import styles from "app/styles/tailwind.css"
+import styles from "app/styles/app.css"
 
 export const links = () => [{ rel: "stylesheet", href: styles }]
 
