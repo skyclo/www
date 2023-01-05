@@ -33,7 +33,7 @@ import {
 } from "@icons-pack/react-simple-icons"
 import { useEffect, useState } from "react"
 
-let sections = ["intro", "skills", "education"]
+let sections = ["intro", "skills", "education", "experience"]
 
 export default function Index() {
     let [currentSection, setCurrentSection] = useState(null)
@@ -209,10 +209,10 @@ export default function Index() {
                             if (!title || !skills) return null
                             return (
                                 <div key={i} className="w-full">
-                                    <h3 className="mt-3 w-full border-b border-gray-50 border-opacity-20 text-left">
+                                    <h3 className="mt-8 w-full border-b border-gray-50 border-opacity-20 text-left">
                                         {title}
                                     </h3>
-                                    <div className="mt-3 mb-6 mr-auto flex flex-row flex-wrap space-x-8">
+                                    <div className="mt-2 mb-6 mr-auto flex flex-row flex-wrap space-x-8">
                                         {skills.map(({ icon, name, color }, j) => {
                                             if (!icon || !name) return null
                                             const Icon = icon
@@ -309,7 +309,7 @@ export default function Index() {
 
                             return (
                                 <div key={i} className="w-full">
-                                    <h3 className="mt-6 w-full">{name}</h3>
+                                    <h3 className="mt-8 w-full">{name}</h3>
                                     <div className="w-full border-b border-gray-50 border-opacity-20 pb-2 text-xs font-medium opacity-60">
                                         {date.from} - {date.to}
                                         <span className="mx-3">•</span>
@@ -319,7 +319,7 @@ export default function Index() {
                                         {gpa && <span className="mx-3">•</span>}
                                         {gpa && "GPA: " + gpa}
                                     </div>
-                                    <div className="mt-3 flex w-full flex-row space-x-8">
+                                    <div className="mt-2 flex w-full flex-row space-x-8">
                                         <div className="flex w-1/2 flex-col">
                                             <h4>Relevant Coursework</h4>
                                             <ul className="ml-4 list-inside list-disc">
@@ -348,6 +348,80 @@ export default function Index() {
                                                 })}
                                             </ul>
                                         </div>
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </div>
+                </section>
+                <section
+                    id={sections[i++]}
+                    className="flex h-screen w-screen snap-start snap-always flex-col items-center justify-center bg-black">
+                    <h2 className="bg-gradient-multi text-glow bg-clip-text text-center text-transparent">
+                        Work Experience
+                    </h2>
+                    <div className="mx-auto flex max-w-7xl flex-col">
+                        {[
+                            {
+                                role: "Junior Software Developer (Techranger)",
+                                date: {
+                                    from: "Oct 2021",
+                                    to: "Mar 2022",
+                                },
+                                location: "Orlando, FL",
+                                company: "UCF Center for Distributed Learning",
+                                description: [
+                                    "Cataloged and QA-ed 170 chapters of the University's official Chemistry Textbook",
+                                    "Created a suite of 4 automation tools for CDL projects to conduct QA tests and track project progress",
+                                ],
+                            },
+                            {
+                                role: "Freelance Developer",
+                                date: {
+                                    from: "2018",
+                                    to: "2019",
+                                },
+                                location: "Orlando, FL",
+                                company: null,
+                                description: [
+                                    "Developed a customer service ticketing and management system for a local business",
+                                    "Completed over 14 contracts for website design, software development, OSINT research, etc.",
+                                ],
+                            },
+                            {
+                                role: "Summer Intern",
+                                date: {
+                                    from: "Jun 2019",
+                                    to: "Aug 2019",
+                                },
+                                location: "Orlando, FL",
+                                company: "Gizmo Productions",
+                                description: [
+                                    "Maintained critical computer services and designed mockups for a company website redesign",
+                                    "Worked directly with 4 clients to coordinate projects and created a final project with fellow interns",
+                                ],
+                            },
+                        ].map(({ role, date, location, company, description }, i) => {
+                            if (!role || !date || !location || !description) return null
+
+                            return (
+                                <div key={i} className="w-full">
+                                    <h3 className="mt-8 w-full">{role}</h3>
+                                    <div className="w-full border-b border-gray-50 border-opacity-20 pb-2 text-xs font-medium opacity-60">
+                                        {date.from} - {date.to}
+                                        {location && <span className="mx-3">•</span>}
+                                        {location}
+                                        {company && <span className="mx-3">•</span>}
+                                        {company}
+                                    </div>
+                                    <div className="mt-2 flex flex-col">
+                                        <h4>Responsibilities</h4>
+                                        <ul className="ml-4 list-inside list-disc">
+                                            {description.map((item, i) => {
+                                                if (!item?.length) return null
+                                                return <li key={i}>{item}</li>
+                                            })}
+                                        </ul>
                                     </div>
                                 </div>
                             )
