@@ -8,6 +8,7 @@ import {
     Csharp,
     CssThree,
     Docker,
+    Firebase,
     Git,
     Github as GithubIcon,
     Googlecloud,
@@ -17,9 +18,13 @@ import {
     Javascript,
     Jest,
     Microsoftoffice,
+    Mongodb,
     Nodedotjs,
     Openjdk,
+    Postgresql,
     ReactJs,
+    Sqlite,
+    Supabase,
     Typescript,
     Webassembly,
 } from "@icons-pack/react-simple-icons"
@@ -143,6 +148,16 @@ export default function Index() {
                                     { icon: C, name: "C", color: "#A8B9CC" },
                                     { icon: Openjdk, name: "Java", color: "#FFFFFF" },
                                     { icon: Csharp, name: "C#", color: "#239120" },
+                                ],
+                            },
+                            {
+                                title: "Databases",
+                                skills: [
+                                    { icon: Mongodb, name: "MongoDB", color: "#47A248" },
+                                    { icon: Postgresql, name: "PostgreSQL", color: "#4d77f7" },
+                                    { icon: Sqlite, name: "SQLite", color: "#029ce3" },
+                                    { icon: Firebase, name: "Firebase", color: "#FFCA28" },
+                                    { icon: Supabase, name: "Supabase", color: "#3ECF8E" },
                                 ],
                             },
                             {
