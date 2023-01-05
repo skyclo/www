@@ -32,3 +32,48 @@
     src: url("/fonts/Gilroy-Extrabold.woff") format("woff");
     font-display: swap;
 }
+
+@layer components {
+    * {
+        @apply transition delay-100 duration-300 ease-in-out;
+    }
+
+    h1 {
+        @apply font-sans text-6xl font-extrabold tracking-tight text-gray-50;
+    }
+
+    h2 {
+        @apply font-sans text-4xl font-extrabold tracking-tight text-gray-50;
+    }
+
+    h3 {
+        @apply font-sans text-2xl font-bold tracking-tight text-gray-50 opacity-90;
+    }
+
+    .glowback {
+        @apply bg-black;
+        box-shadow: inset 20vw 0 115vh theme(colors.cyan.500 / 7%),
+            inset -30vw 0 115vh theme(colors.orange.500 / 7%),
+            inset 4vw 12vh 100vh theme(colors.purple.500 / 14%);
+    }
+
+    .bg-gradient-multi {
+        background: linear-gradient(
+                to top right,
+                theme(colors.cyan.500 / 50%),
+                theme(colors.purple.500 / 25%),
+                theme(colors.gray.50)
+            ),
+            linear-gradient(
+                to top left,
+                theme(colors.orange.500 / 50%),
+                theme(colors.purple.500 / 25%),
+                theme(colors.gray.50)
+            ),
+            theme(colors.gray.50);
+    }
+
+    .text-glow {
+        text-shadow: 0 0 72px theme(colors.gray.50 / 55%), 0 0 24px theme(colors.gray.50 / 24%);
+    }
+}
