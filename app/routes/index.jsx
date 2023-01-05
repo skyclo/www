@@ -30,10 +30,11 @@ import {
 } from "@icons-pack/react-simple-icons"
 import { useEffect, useState } from "react"
 
-let sections = ["intro", "skills"]
+let sections = ["intro", "skills", "education"]
 
 export default function Index() {
     let [currentSection, setCurrentSection] = useState(null)
+    let i = 0
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -74,7 +75,7 @@ export default function Index() {
             </nav>
             <main className="glowback h-screen w-screen snap-y snap-mandatory overflow-scroll bg-black bg-no-repeat">
                 <section
-                    id={sections[0]}
+                    id={sections[i++]}
                     className="flex h-screen w-screen snap-start snap-always flex-col items-center justify-center bg-gradient-to-b from-black/0 to-black/100">
                     <h1 className="bg-gradient-multi text-glow bg-clip-text text-center text-transparent">
                         Hello, my name is Conor.
@@ -119,7 +120,7 @@ export default function Index() {
                     </div>
                 </section>
                 <section
-                    id={sections[1]}
+                    id={sections[i++]}
                     className="flex h-screen w-screen snap-start snap-always flex-col items-center justify-center bg-black">
                     <h2 className="bg-gradient-multi text-glow bg-clip-text text-center text-transparent">
                         Skills
@@ -202,7 +203,7 @@ export default function Index() {
                         ].map(({ title, skills }, i) => {
                             if (!title || !skills) return null
                             return (
-                                <div key={i}>
+                                <div key={i} className="w-full">
                                     <h3 className="mt-3 w-full border-b border-gray-50 border-opacity-20 text-left">
                                         {title}
                                     </h3>
@@ -229,8 +230,124 @@ export default function Index() {
                         })}
                     </div>
                 </section>
-                <section className="flex h-screen w-screen snap-start snap-always flex-col items-center justify-center bg-black">
-                    <h1>Index</h1>
+                <section
+                    id={sections[i++]}
+                    className="flex h-screen w-screen snap-start snap-always flex-col items-center justify-center bg-black">
+                    <h2 className="bg-gradient-multi text-glow bg-clip-text text-center text-transparent">
+                        Education
+                    </h2>
+                    <div className="mx-auto flex max-w-7xl flex-col">
+                        {[
+                            {
+                                name: "University of Central Florida",
+                                date: {
+                                    from: "Aug 2021",
+                                    to: "Present",
+                                },
+                                location: "Orlando, FL",
+                                degree: "Computer Science (B.S.)",
+                                gpa: null,
+                                courses: [
+                                    { name: "Computer Organization", code: "CDA 3103" },
+                                    { name: "Intro to C", code: "COP 3223C" },
+                                    { name: "Security in Computing", code: "CIS 3360" },
+                                    { name: "Intro to Discrete Structures", code: "COT 3100" },
+                                    {
+                                        name: "Object Oriented Programming (Java)",
+                                        code: "COP 3330",
+                                    },
+                                    { name: "Computer Science I (C)", code: "COP 3502" },
+                                    { name: "Computer Science II (Java)", code: "COP 3503" },
+                                ],
+                                clubs: [
+                                    { org: "UCF Excel Program", role: "Member" },
+                                    {
+                                        org: "UCF KnightHacks",
+                                        role: "Fall 2021 Team #12 Project Lead",
+                                    },
+                                    { org: "UCF Model UN", role: "Former Member" },
+                                ],
+                            },
+                            {
+                                name: "High School",
+                                date: {
+                                    from: "Aug 2017",
+                                    to: "May 2021",
+                                },
+                                location: "Orlando, FL",
+                                degree: "Name available upon request",
+                                gpa: 4.26,
+                                courses: [
+                                    { name: "Modeling and Simulation I-IV", code: null },
+                                    { name: "AP Computer Science Principles", code: "Score: 4" },
+                                    { name: "AP Computer Science A", code: "Score: 4" },
+                                    { name: "AP Calculus AB", code: "Score: 3" },
+                                    { name: "AP Calculus BC", code: "Score: 5" },
+                                ],
+                                clubs: [
+                                    {
+                                        org: "Modeling and Simulation Club",
+                                        role: "Project Team Lead",
+                                    },
+                                    {
+                                        org: "FIRST FTC Team 4717",
+                                        role: "Assistant Programmer and Electrical Services",
+                                    },
+                                    { org: "Student Government", role: "Senior Senator" },
+                                    { org: "Business Professionals of America", role: null },
+                                    { org: "Science National Honors Society", role: "Member" },
+                                    { org: "Key Club", role: "Member" },
+                                ],
+                            },
+                        ].map(({ name, date, location, degree, gpa, courses, clubs }, i) => {
+                            if (!name || !date || !location || !courses || !clubs) return null
+
+                            return (
+                                <div key={i} className="w-full">
+                                    <h3 className="mt-6 w-full">{name}</h3>
+                                    <div className="w-full border-b border-gray-50 border-opacity-20 pb-2 text-xs font-medium opacity-60">
+                                        {date.from} - {date.to}
+                                        <span className="mx-3">•</span>
+                                        {location}
+                                        {degree && <span className="mx-3">•</span>}
+                                        {degree}
+                                        {gpa && <span className="mx-3">•</span>}
+                                        {gpa && "GPA: " + gpa}
+                                    </div>
+                                    <div className="mt-3 flex w-full flex-row">
+                                        <div className="flex w-1/2 flex-col">
+                                            <h4>Relevant Coursework</h4>
+                                            <ul className="ml-4 list-inside list-disc">
+                                                {courses.map(({ name, code }, i) => {
+                                                    if (!name) return null
+                                                    return (
+                                                        <li key={i}>
+                                                            {name}
+                                                            {code && " (" + code + ")"}{" "}
+                                                        </li>
+                                                    )
+                                                })}
+                                            </ul>
+                                        </div>
+                                        <div className="flex w-1/2 flex-col">
+                                            <h4>Clubs and Involvement</h4>
+                                            <ul className="ml-4 list-inside list-disc">
+                                                {clubs.map(({ org, role }, i) => {
+                                                    if (!org) return null
+                                                    return (
+                                                        <li key={i}>
+                                                            {org}
+                                                            {role && ", " + role}{" "}
+                                                        </li>
+                                                    )
+                                                })}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </div>
                 </section>
             </main>
         </>

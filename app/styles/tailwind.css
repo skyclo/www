@@ -38,16 +38,24 @@
         @apply transition delay-100 duration-300 ease-in-out;
     }
 
+    body {
+        @apply scroll-smooth font-sans text-gray-50;
+    }
+
     h1 {
         @apply font-sans text-6xl font-extrabold tracking-tight text-gray-50;
     }
 
     h2 {
-        @apply font-sans text-4xl font-extrabold tracking-tight text-gray-50;
+        @apply font-sans text-5xl font-extrabold tracking-tight text-gray-50;
     }
 
     h3 {
-        @apply font-sans text-2xl font-bold tracking-tight text-gray-50 opacity-90;
+        @apply font-sans text-3xl font-bold tracking-tight text-gray-50 opacity-90;
+    }
+
+    h4 {
+        @apply font-sans text-xl font-semibold tracking-tight text-gray-50 opacity-90;
     }
 
     .glowback {
