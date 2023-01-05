@@ -19,12 +19,15 @@ import {
     Jest,
     Microsoftoffice,
     Mongodb,
+    Nextdotjs,
     Nodedotjs,
     Openjdk,
     Postgresql,
     ReactJs,
+    Remix,
     Sqlite,
     Supabase,
+    Tailwindcss,
     Typescript,
     Webassembly,
 } from "@icons-pack/react-simple-icons"
@@ -133,9 +136,10 @@ export default function Index() {
                                     { icon: Javascript, name: "Javascript", color: "#F7DF1E" },
                                     { icon: Html5, name: "HTML", color: "#E34F26" },
                                     { icon: CssThree, name: "CSS", color: "#1572B6" },
+                                    { icon: Tailwindcss, name: "TailwindCSS", color: "#06B6D4" },
                                     { icon: ReactJs, name: "React", color: "#61DAFB" },
-                                    { icon: Typescript, name: "Typescript", color: "#3178C6" },
-                                    { icon: Nodedotjs, name: "Node.js", color: "#339933" },
+                                    { icon: Remix, name: "Remix", color: "#FFFFFF" },
+                                    { icon: Nextdotjs, name: "Next.js", color: "#FFFFFF" },
                                     {
                                         icon: Webassembly,
                                         name: "WebAssembly (WASM)",
@@ -149,6 +153,7 @@ export default function Index() {
                                     { icon: C, name: "C", color: "#A8B9CC" },
                                     { icon: Openjdk, name: "Java", color: "#FFFFFF" },
                                     { icon: Csharp, name: "C#", color: "#239120" },
+                                    { icon: Typescript, name: "Typescript", color: "#3178C6" },
                                 ],
                             },
                             {
@@ -314,7 +319,7 @@ export default function Index() {
                                         {gpa && <span className="mx-3">•</span>}
                                         {gpa && "GPA: " + gpa}
                                     </div>
-                                    <div className="mt-3 flex w-full flex-row">
+                                    <div className="mt-3 flex w-full flex-row space-x-8">
                                         <div className="flex w-1/2 flex-col">
                                             <h4>Relevant Coursework</h4>
                                             <ul className="ml-4 list-inside list-disc">
