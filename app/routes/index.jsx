@@ -20,7 +20,6 @@ import {
     Microsoftoffice,
     Mongodb,
     Nextdotjs,
-    Nodedotjs,
     Openjdk,
     Postgresql,
     ReactJs,
