@@ -30,7 +30,7 @@ import {
     Typescript,
     Webassembly,
 } from "@icons-pack/react-simple-icons"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 let sections = ["intro", "skills", "education", "experience"]
 let rxJSON = {
@@ -238,12 +238,16 @@ let rxJSON = {
 
 export default function Index() {
     let [currentSection, setCurrentSection] = useState(null)
+    let [navVisible, setNavVisible] = useState(false)
+    let timeout = useRef(null)
     let i = 0
 
     useEffect(() => {
         const observer = new IntersectionObserver(
-            sects =>
-                sects.forEach(sect => sect.isIntersecting && setCurrentSection(sect.target.id)),
+            sections =>
+                sections.forEach(
+                    s => s.isIntersecting && setTimeout(() => setCurrentSection(s.target.id), 100)
+                ),
             { threshold: 0.5 }
         )
         sections.forEach(section => observer.observe(document.querySelector("#" + section)))
@@ -287,26 +291,40 @@ export default function Index() {
 
     return (
         <>
-            <nav className="absolute top-1/2 right-8 flex flex-col space-y-4">
-                {sections.map((section, i) => (
-                    <div
-                        key={i}
-                        className={
-                            "h-2 w-2 cursor-pointer rounded-full " +
-                            (currentSection == section ? "bg-gradient-multi" : "bg-gray-500")
-                        }
-                        onClick={e => {
-                            e.preventDefault()
-                            document.querySelector("#" + section)?.scrollIntoView({
-                                behavior: "smooth",
-                                block: "start",
-                                inline: "nearest",
-                            })
-                        }}
-                        title={section}></div>
-                ))}
+            <nav
+                className={
+                    "absolute top-0 right-0 flex h-full flex-col " +
+                    (navVisible ? "opacity-100" : "opacity-0")
+                }>
+                <div className="my-auto flex flex-col space-y-4 bg-[radial-gradient(at_right_center,_theme(colors.purple.500/28%)_0%,_#00000000_65%)] px-8 py-28">
+                    {sections.map((section, i) => (
+                        <div
+                            key={i}
+                            className={
+                                "w-2 cursor-pointer rounded-full " +
+                                (currentSection == section
+                                    ? "bg-gradient-multi h-6"
+                                    : "h-2 bg-gray-500")
+                            }
+                            onClick={e => {
+                                e.preventDefault()
+                                document.querySelector("#" + section)?.scrollIntoView({
+                                    behavior: "smooth",
+                                    block: "start",
+                                    inline: "nearest",
+                                })
+                            }}
+                            title={section}></div>
+                    ))}
+                </div>
             </nav>
-            <main className="glowback h-screen w-screen snap-y snap-mandatory overflow-scroll bg-black bg-no-repeat">
+            <main
+                className="glowback h-screen w-screen snap-y snap-mandatory overflow-scroll bg-black bg-no-repeat"
+                onScroll={() => {
+                    setNavVisible(true)
+                    clearTimeout(timeout.current)
+                    timeout.current = setTimeout(() => setNavVisible(false), 2000)
+                }}>
                 <section
                     id={sections[i++]}
                     className="flex h-screen w-screen snap-start snap-always flex-col items-center justify-center bg-gradient-to-b from-black/0 to-black/100">
