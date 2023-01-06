@@ -26,6 +26,12 @@ let sections = [
         header: "Work Experience",
         mappedComponent: Job,
     },
+    {
+        id: "contact",
+        bg: "gradient-out",
+        header: "Contact",
+        children: () => <p className="mt-8">Coming Soon</p>,
+    },
 ]
 
 export default function Index() {
@@ -62,11 +68,17 @@ export default function Index() {
                             }
                             onClick={e => {
                                 e.preventDefault()
-                                document.querySelector("#" + section.id)?.scrollIntoView({
-                                    behavior: "smooth",
-                                    block: "start",
-                                    inline: "nearest",
-                                })
+                                setCurrentSection(section.id)
+
+                                setTimeout(
+                                    () =>
+                                        document.querySelector("#" + section.id)?.scrollIntoView({
+                                            behavior: "smooth",
+                                            block: "start",
+                                            inline: "nearest",
+                                        }),
+                                    200
+                                )
                             }}
                             title={section.header}></div>
                     ))}
@@ -129,6 +141,9 @@ export default function Index() {
                         </div>
                     </section>
                 ))}
+                <div className="relative bottom-0 mx-auto -mt-28 flex w-full flex-col py-12 text-center text-xs font-semibold opacity-20">
+                    (C) 2018-2022 Conor Daly (Skyclo)
+                </div>
             </main>
         </>
     )
