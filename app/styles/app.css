@@ -599,12 +599,20 @@ h4 {
   position: absolute;
 }
 
+.relative {
+  position: relative;
+}
+
 .top-0 {
   top: 0px;
 }
 
 .right-0 {
   right: 0px;
+}
+
+.bottom-0 {
+  bottom: 0px;
 }
 
 .mx-3 {
@@ -652,6 +660,10 @@ h4 {
 
 .ml-2 {
   margin-left: 0.5rem;
+}
+
+.-mt-28 {
+  margin-top: -7rem;
 }
 
 .block {
@@ -788,10 +800,6 @@ h4 {
   overflow: hidden;
 }
 
-.overflow-scroll {
-  overflow: scroll;
-}
-
 .rounded-full {
   border-radius: 9999px;
 }
@@ -817,14 +825,6 @@ h4 {
 .bg-black {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
-}
-
-.bg-transparent {
-  background-color: transparent;
-}
-
-.bg-black\/0 {
-  background-color: rgb(0 0 0 / 0);
 }
 
 .bg-\[radial-gradient\(at_right_center\2c _theme\(colors\.purple\.500\/28\%\)_0\%\2c _\#00000000_65\%\)\] {
@@ -876,6 +876,11 @@ h4 {
   padding-bottom: 7rem;
 }
 
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
 .pb-2 {
   padding-bottom: 0.5rem;
 }
@@ -910,6 +915,10 @@ h4 {
   font-weight: 400;
 }
 
+.font-semibold {
+  font-weight: 600;
+}
+
 .uppercase {
   text-transform: uppercase;
 }
@@ -941,6 +950,10 @@ h4 {
 
 .opacity-0 {
   opacity: 0;
+}
+
+.opacity-20 {
+  opacity: 0.2;
 }
 
 @font-face {

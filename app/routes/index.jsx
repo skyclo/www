@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Institution from "~/components/Institution"
 import Intro from "~/components/Intro"
 import Job from "~/components/Job"
@@ -33,6 +33,16 @@ export default function Index() {
     let [navVisible, setNavVisible] = useState(false)
     let timeout = useRef(null)
 
+    useEffect(
+        () =>
+            document.querySelector("#" + sections?.[0]?.id)?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+                inline: "nearest",
+            }),
+        []
+    )
+
     return (
         <>
             <nav
@@ -65,8 +75,6 @@ export default function Index() {
             <main
                 className="glowback h-screen w-screen snap-y snap-mandatory overflow-hidden bg-black bg-no-repeat"
                 onWheel={e => {
-                    e.preventDefault()
-
                     let sectionIndex = sections?.findIndex(sect => sect?.id == currentSection)
                     if (sectionIndex == -1) return
 
