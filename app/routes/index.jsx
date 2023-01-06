@@ -4,8 +4,6 @@ import Intro from "~/components/Intro"
 import Job from "~/components/Job"
 import rxJSON from "~/components/rx"
 import Skill from "~/components/Skill"
-import dateLength from "~/utils/dateLength"
-import toMonthYearString from "~/utils/toMonthYearString"
 
 let sections = [
     {
