@@ -59,7 +59,6 @@
     }
 
     .glowback {
-        @apply bg-black;
         box-shadow: inset 20vw 0 115vh theme(colors.cyan.500 / 7%),
             inset -30vw 0 115vh theme(colors.orange.500 / 7%),
             inset 4vw 12vh 100vh theme(colors.purple.500 / 14%);

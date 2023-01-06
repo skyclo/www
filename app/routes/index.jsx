@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import rxJSON from "~/components/rx"
+import Section from "~/components/Section"
 import dateLength from "~/utils/dateLength"
 import toMonthYearString from "~/utils/toMonthYearString"
 
@@ -58,9 +59,7 @@ export default function Index() {
                     clearTimeout(timeout.current)
                     timeout.current = setTimeout(() => setNavVisible(false), 2000)
                 }}>
-                <section
-                    id={sections[i++]}
-                    className="flex h-screen w-screen snap-start snap-always flex-col items-center justify-center bg-gradient-to-b from-black/0 to-black/100">
+                <Section id={sections[i++]} bg="gradient-in">
                     <h1 className="bg-gradient-multi text-glow bg-clip-text text-center text-transparent">
                         Hello, my name is {rxJSON?.name?.split(" ")?.[0]}.
                     </h1>
@@ -69,7 +68,7 @@ export default function Index() {
                             <span key={i}>{tag}</span>
                         ))}
                     </div>
-                    <div className="mt-4 flex flex-row space-x-6">
+                    <div className="mx-auto mt-4 flex flex-row space-x-6">
                         {rxJSON?.socials?.map(({ platform, icon, link }, i) => {
                             if (!platform || !icon || !link) return null
                             const Icon = icon
@@ -86,147 +85,126 @@ export default function Index() {
                             )
                         })}
                     </div>
-                </section>
-                <section
-                    id={sections[i++]}
-                    className="flex h-screen w-screen snap-start snap-always flex-col items-center justify-center bg-black">
-                    <h2 className="bg-gradient-multi text-glow bg-clip-text text-center text-transparent">
-                        Skills
-                    </h2>
-                    <div className="mx-auto flex max-w-7xl flex-col">
-                        {rxJSON?.skills?.map(({ title, skills }, i) => {
-                            if (!title || !skills) return null
+                </Section>
+                <Section id={sections[i++]} header={"Skills"}>
+                    {rxJSON?.skills?.map(({ title, skills }, i) => {
+                        if (!title || !skills) return null
+                        return (
+                            <div key={i} className="w-full">
+                                <h3 className="mt-8 w-full border-b border-gray-50 border-opacity-20 text-left">
+                                    {title}
+                                </h3>
+                                <div className="mt-2 mb-6 mr-auto flex flex-row flex-wrap space-x-8">
+                                    {skills.map(({ icon, name, color }, j) => {
+                                        if (!icon || !name) return null
+                                        const Icon = icon
+                                        return (
+                                            <div key={j} className="flex flex-row">
+                                                <Icon
+                                                    title={name}
+                                                    className="h-4 w-4"
+                                                    color={color}
+                                                />
+                                                <div className="my-auto ml-2 text-sm font-medium text-gray-50">
+                                                    {name}
+                                                </div>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                            </div>
+                        )
+                    })}
+                </Section>
+                <Section id={sections[i++]} header={"Education"}>
+                    {rxJSON?.education?.map(
+                        ({ name, date, location, degree, gpa, courses, clubs }, i) => {
+                            if (!name || !date || !location || !courses || !clubs) return null
+
                             return (
                                 <div key={i} className="w-full">
-                                    <h3 className="mt-8 w-full border-b border-gray-50 border-opacity-20 text-left">
-                                        {title}
-                                    </h3>
-                                    <div className="mt-2 mb-6 mr-auto flex flex-row flex-wrap space-x-8">
-                                        {skills.map(({ icon, name, color }, j) => {
-                                            if (!icon || !name) return null
-                                            const Icon = icon
-                                            return (
-                                                <div key={j} className="flex flex-row">
-                                                    <Icon
-                                                        title={name}
-                                                        className="h-4 w-4"
-                                                        color={color}
-                                                    />
-                                                    <div className="my-auto ml-2 text-sm font-medium text-gray-50">
-                                                        {name}
-                                                    </div>
-                                                </div>
-                                            )
-                                        })}
+                                    <h3 className="mt-8 w-full">{name}</h3>
+                                    <div className="w-full border-b border-gray-50 border-opacity-20 pb-2 text-xs font-medium opacity-60">
+                                        {toMonthYearString(date.from)} -{" "}
+                                        {toMonthYearString(date.to)}
+                                        <span className="mx-3">•</span>
+                                        {location}
+                                        {degree && <span className="mx-3">•</span>}
+                                        {degree}
+                                        {gpa && <span className="mx-3">•</span>}
+                                        {gpa && "GPA: " + gpa}
                                     </div>
-                                </div>
-                            )
-                        })}
-                    </div>
-                </section>
-                <section
-                    id={sections[i++]}
-                    className="flex h-screen w-screen snap-start snap-always flex-col items-center justify-center bg-black">
-                    <h2 className="bg-gradient-multi text-glow bg-clip-text text-center text-transparent">
-                        Education
-                    </h2>
-                    <div className="mx-auto flex max-w-7xl flex-col">
-                        {rxJSON?.education?.map(
-                            ({ name, date, location, degree, gpa, courses, clubs }, i) => {
-                                if (!name || !date || !location || !courses || !clubs) return null
-
-                                return (
-                                    <div key={i} className="w-full">
-                                        <h3 className="mt-8 w-full">{name}</h3>
-                                        <div className="w-full border-b border-gray-50 border-opacity-20 pb-2 text-xs font-medium opacity-60">
-                                            {toMonthYearString(date.from)} -{" "}
-                                            {toMonthYearString(date.to)}
-                                            <span className="mx-3">•</span>
-                                            {location}
-                                            {degree && <span className="mx-3">•</span>}
-                                            {degree}
-                                            {gpa && <span className="mx-3">•</span>}
-                                            {gpa && "GPA: " + gpa}
-                                        </div>
-                                        <div className="mt-2 flex w-full flex-row space-x-8">
-                                            <div className="flex w-1/2 flex-col">
-                                                <h4>Relevant Coursework</h4>
-                                                <ul className="ml-4 list-inside list-disc">
-                                                    {courses.map(({ name, code }, i) => {
-                                                        if (!name) return null
-                                                        return (
-                                                            <li key={i}>
-                                                                {name}
-                                                                {code && " (" + code + ")"}{" "}
-                                                            </li>
-                                                        )
-                                                    })}
-                                                </ul>
-                                            </div>
-                                            <div className="flex w-1/2 flex-col">
-                                                <h4>Clubs and Involvement</h4>
-                                                <ul className="ml-4 list-inside list-disc">
-                                                    {clubs.map(({ org, role }, i) => {
-                                                        if (!org) return null
-                                                        return (
-                                                            <li key={i}>
-                                                                {org}
-                                                                {role && ", " + role}{" "}
-                                                            </li>
-                                                        )
-                                                    })}
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                )
-                            }
-                        )}
-                    </div>
-                </section>
-                <section
-                    id={sections[i++]}
-                    className="flex h-screen w-screen snap-start snap-always flex-col items-center justify-center bg-black">
-                    <h2 className="bg-gradient-multi text-glow bg-clip-text text-center text-transparent">
-                        Work Experience
-                    </h2>
-                    <div className="mx-auto flex max-w-7xl flex-col">
-                        {rxJSON?.experience?.map(
-                            ({ role, date, location, company, description }, i) => {
-                                if (!role || !date || !location || !description) return null
-
-                                return (
-                                    <div key={i} className="w-full">
-                                        <h3 className="mt-8 w-full">{role}</h3>
-                                        <div className="w-full border-b border-gray-50 border-opacity-20 pb-2 text-xs font-medium opacity-60">
-                                            {toMonthYearString(date.from)} -{" "}
-                                            {toMonthYearString(date.to)}
-                                            {" (" +
-                                                dateLength(
-                                                    date.from,
-                                                    date.to == "Present" ? null : date.to
-                                                ) +
-                                                ")"}
-                                            {location && <span className="mx-3">•</span>}
-                                            {location}
-                                            {company && <span className="mx-3">•</span>}
-                                            {company}
-                                        </div>
-                                        <div className="mt-2 flex flex-col">
-                                            <h4>Responsibilities</h4>
+                                    <div className="mt-2 flex w-full flex-row space-x-8">
+                                        <div className="flex w-1/2 flex-col">
+                                            <h4>Relevant Coursework</h4>
                                             <ul className="ml-4 list-inside list-disc">
-                                                {description.map((item, i) => {
-                                                    if (!item?.length) return null
-                                                    return <li key={i}>{item}</li>
+                                                {courses.map(({ name, code }, i) => {
+                                                    if (!name) return null
+                                                    return (
+                                                        <li key={i}>
+                                                            {name}
+                                                            {code && " (" + code + ")"}{" "}
+                                                        </li>
+                                                    )
+                                                })}
+                                            </ul>
+                                        </div>
+                                        <div className="flex w-1/2 flex-col">
+                                            <h4>Clubs and Involvement</h4>
+                                            <ul className="ml-4 list-inside list-disc">
+                                                {clubs.map(({ org, role }, i) => {
+                                                    if (!org) return null
+                                                    return (
+                                                        <li key={i}>
+                                                            {org}
+                                                            {role && ", " + role}{" "}
+                                                        </li>
+                                                    )
                                                 })}
                                             </ul>
                                         </div>
                                     </div>
-                                )
-                            }
-                        )}
-                    </div>
-                </section>
+                                </div>
+                            )
+                        }
+                    )}
+                </Section>
+                <Section id={sections[i++]} header={"Work Experience"}>
+                    {rxJSON?.experience?.map(
+                        ({ role, date, location, company, description }, i) => {
+                            if (!role || !date || !location || !description) return null
+
+                            return (
+                                <div key={i} className="w-full">
+                                    <h3 className="mt-8 w-full">{role}</h3>
+                                    <div className="w-full border-b border-gray-50 border-opacity-20 pb-2 text-xs font-medium opacity-60">
+                                        {toMonthYearString(date.from)} -{" "}
+                                        {toMonthYearString(date.to)}
+                                        {" (" +
+                                            dateLength(
+                                                date.from,
+                                                date.to == "Present" ? null : date.to
+                                            ) +
+                                            ")"}
+                                        {location && <span className="mx-3">•</span>}
+                                        {location}
+                                        {company && <span className="mx-3">•</span>}
+                                        {company}
+                                    </div>
+                                    <div className="mt-2 flex flex-col">
+                                        <h4>Responsibilities</h4>
+                                        <ul className="ml-4 list-inside list-disc">
+                                            {description.map((item, i) => {
+                                                if (!item?.length) return null
+                                                return <li key={i}>{item}</li>
+                                            })}
+                                        </ul>
+                                    </div>
+                                </div>
+                            )
+                        }
+                    )}
+                </Section>
             </main>
         </>
     )
