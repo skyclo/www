@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react"
 import rxJSON from "~/components/rx"
-import Section from "~/components/Section"
 import dateLength from "~/utils/dateLength"
 import toMonthYearString from "~/utils/toMonthYearString"
 
@@ -196,14 +195,33 @@ export default function Index() {
                     timeout.current = setTimeout(() => setNavVisible(false), 2000)
                 }}>
                 {sections.map((section, i) => (
-                    <Section key={i} id={section.id} bg={section?.bg} header={section?.header}>
-                        {section?.children && section.children()}
-                        {section?.mappedComponent &&
-                            rxJSON?.[section?.id]?.map((item, i) => {
-                                if (!item) return null
-                                return section.mappedComponent(item, i)
-                            })}
-                    </Section>
+                    <section
+                        key={i}
+                        id={section.id}
+                        bg={section?.bg}
+                        header={section?.header}
+                        className={
+                            "flex h-screen w-screen snap-start snap-always flex-col items-center justify-center " +
+                            (section?.bg === "gradient-in"
+                                ? "bg-gradient-to-b from-black/0 to-black/100"
+                                : section?.bg === "gradient-out"
+                                ? "bg-gradient-to-t from-black/0 to-black/100"
+                                : "bg-black")
+                        }>
+                        {section?.header && (
+                            <h2 className="bg-gradient-multi text-glow bg-clip-text text-center text-transparent">
+                                {section?.header}
+                            </h2>
+                        )}
+                        <div className="mx-auto flex max-w-7xl flex-col">
+                            {section?.children && section.children()}
+                            {section?.mappedComponent &&
+                                rxJSON?.[section?.id]?.map((item, i) => {
+                                    if (!item) return null
+                                    return section.mappedComponent(item, i)
+                                })}
+                        </div>
+                    </section>
                 ))}
             </main>
         </>
