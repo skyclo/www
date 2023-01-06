@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from "react"
+import Institution from "~/components/Institution"
+import Intro from "~/components/Intro"
+import Job from "~/components/Job"
 import rxJSON from "~/components/rx"
+import Skill from "~/components/Skill"
 import dateLength from "~/utils/dateLength"
 import toMonthYearString from "~/utils/toMonthYearString"
 
@@ -7,137 +11,22 @@ let sections = [
     {
         id: "intro",
         bg: "gradient-in",
-        children: () => (
-            <>
-                <h1 className="bg-gradient-multi text-glow bg-clip-text text-center text-transparent">
-                    Hello, my name is {rxJSON?.name?.split(" ")?.[0]}.
-                </h1>
-                <div className="text-md mt-3 space-x-6 text-center font-sans font-normal uppercase tracking-wider text-gray-50 opacity-60">
-                    {rxJSON?.tagline?.split(", ")?.map((tag, i) => (
-                        <span key={i}>{tag}</span>
-                    ))}
-                </div>
-                <div className="mx-auto mt-4 flex flex-row space-x-6">
-                    {rxJSON?.socials?.map(({ platform, icon, link }, i) => {
-                        if (!platform || !icon || !link) return null
-                        const Icon = icon
-                        return (
-                            <Icon
-                                key={i}
-                                className="h-5 w-5 cursor-pointer stroke-current stroke-2 text-gray-50 opacity-50 hover:opacity-100"
-                                onClick={e => {
-                                    e.preventDefault()
-                                    window.open(link, "_blank")
-                                }}
-                                title={platform}
-                            />
-                        )
-                    })}
-                </div>
-            </>
-        ),
+        children: Intro,
     },
     {
         id: "skills",
         header: "Skills",
-        mappedComponent: (skill, i) => (
-            <div key={i} className="w-full">
-                <h3 className="mt-8 w-full border-b border-gray-50 border-opacity-20 text-left">
-                    {skill.title}
-                </h3>
-                <div className="mt-2 mb-6 mr-auto flex flex-row flex-wrap space-x-8">
-                    {skill.skills.map(({ icon, name, color }, j) => {
-                        if (!icon || !name) return null
-                        const Icon = icon
-                        return (
-                            <div key={j} className="flex flex-row">
-                                <Icon title={name} className="h-4 w-4" color={color} />
-                                <div className="my-auto ml-2 text-sm font-medium text-gray-50">
-                                    {name}
-                                </div>
-                            </div>
-                        )
-                    })}
-                </div>
-            </div>
-        ),
+        mappedComponent: Skill,
     },
     {
         id: "education",
         header: "Education",
-        mappedComponent: (institution, i) => (
-            <div key={i} className="w-full">
-                <h3 className="mt-8 w-full">{institution.name}</h3>
-                <div className="w-full border-b border-gray-50 border-opacity-20 pb-2 text-xs font-medium opacity-60">
-                    {toMonthYearString(institution.date.from)} -{" "}
-                    {toMonthYearString(institution.date.to)}
-                    <span className="mx-3">•</span>
-                    {institution.location}
-                    {institution.degree && <span className="mx-3">•</span>}
-                    {institution.degree}
-                    {institution.gpa && <span className="mx-3">•</span>}
-                    {institution.gpa && "GPA: " + institution.gpa}
-                </div>
-                <div className="mt-2 flex w-full flex-row space-x-8">
-                    <div className="flex w-1/2 flex-col">
-                        <h4>Relevant Coursework</h4>
-                        <ul className="ml-4 list-inside list-disc">
-                            {institution.courses.map(({ name, code }, i) => {
-                                if (!name) return null
-                                return (
-                                    <li key={i}>
-                                        {name}
-                                        {code && " (" + code + ")"}{" "}
-                                    </li>
-                                )
-                            })}
-                        </ul>
-                    </div>
-                    <div className="flex w-1/2 flex-col">
-                        <h4>Clubs and Involvement</h4>
-                        <ul className="ml-4 list-inside list-disc">
-                            {institution.clubs.map(({ org, role }, i) => {
-                                if (!org) return null
-                                return (
-                                    <li key={i}>
-                                        {org}
-                                        {role && ", " + role}{" "}
-                                    </li>
-                                )
-                            })}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        ),
+        mappedComponent: Institution,
     },
     {
         id: "experience",
         header: "Work Experience",
-        mappedComponent: (job, i) => (
-            <div key={i} className="w-full">
-                <h3 className="mt-8 w-full">{job.role}</h3>
-                <div className="w-full border-b border-gray-50 border-opacity-20 pb-2 text-xs font-medium opacity-60">
-                    {toMonthYearString(job.date.from)} - {toMonthYearString(job.date.to)}
-                    {" (" +
-                        dateLength(job.date.from, job.date.to == "Present" ? null : job.date.to) +
-                        ")"}
-                    {job.location && <span className="mx-3">•</span>}
-                    {job.location}
-                    {job.company && <span className="mx-3">•</span>}
-                    {job.company}
-                </div>
-                <div className="mt-2 flex flex-col">
-                    <h4>Responsibilities</h4>
-                    <ul className="ml-4 list-inside list-disc">
-                        {job.description.map((item, i) => {
-                            if (!item?.length) return null
-                            return <li key={i}>{item}</li>
-                        })}
-                    </ul>
-                </div>
-            </div>
-        ),
+        mappedComponent: Job,
     },
 ]
 
@@ -145,7 +34,6 @@ export default function Index() {
     let [currentSection, setCurrentSection] = useState(null)
     let [navVisible, setNavVisible] = useState(false)
     let timeout = useRef(null)
-    let i = 0
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -214,11 +102,12 @@ export default function Index() {
                             </h2>
                         )}
                         <div className="mx-auto flex max-w-7xl flex-col">
-                            {section?.children && section.children()}
+                            {section?.children && <section.children />}
                             {section?.mappedComponent &&
                                 rxJSON?.[section?.id]?.map((item, i) => {
                                     if (!item) return null
-                                    return section.mappedComponent(item, i)
+                                    let MappedComponent = section?.mappedComponent
+                                    return <MappedComponent item={item} key={i} />
                                 })}
                         </div>
                     </section>
