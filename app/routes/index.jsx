@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
 import Institution from "~/components/Institution"
 import Intro from "~/components/Intro"
 import Job from "~/components/Job"
@@ -29,17 +29,9 @@ let sections = [
 ]
 
 export default function Index() {
-    let [currentSection, setCurrentSection] = useState(null)
+    let [currentSection, setCurrentSection] = useState(sections?.[0]?.id)
     let [navVisible, setNavVisible] = useState(false)
     let timeout = useRef(null)
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            sections => sections.forEach(s => s.isIntersecting && setCurrentSection(s.target.id)),
-            { threshold: 0.5 }
-        )
-        sections.forEach(section => observer.observe(document.querySelector("#" + section.id)))
-    }, [])
 
     return (
         <>
@@ -71,8 +63,30 @@ export default function Index() {
                 </div>
             </nav>
             <main
-                className="glowback h-screen w-screen snap-y snap-mandatory overflow-scroll bg-black bg-no-repeat"
-                onScroll={() => {
+                className="glowback h-screen w-screen snap-y snap-mandatory overflow-hidden bg-black bg-no-repeat"
+                onWheel={e => {
+                    e.preventDefault()
+
+                    let sectionIndex = sections?.findIndex(sect => sect?.id == currentSection)
+                    if (sectionIndex == -1) return
+
+                    let nextSectionIndex = (e.deltaY < 0 ? -1 : 1) + sectionIndex
+                    if (nextSectionIndex < 0 || nextSectionIndex >= sections.length) return
+
+                    setCurrentSection(sections?.[nextSectionIndex]?.id)
+
+                    setTimeout(
+                        () =>
+                            document
+                                .querySelector("#" + sections?.[nextSectionIndex]?.id)
+                                ?.scrollIntoView({
+                                    behavior: "smooth",
+                                    block: "start",
+                                    inline: "nearest",
+                                }),
+                        200
+                    )
+
                     setNavVisible(true)
                     clearTimeout(timeout.current)
                     timeout.current = setTimeout(() => setNavVisible(false), 2000)
