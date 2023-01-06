@@ -134,7 +134,7 @@ let rxJSON = {
         {
             name: "University of Central Florida",
             date: {
-                from: "Aug 2021",
+                from: "2021-08",
                 to: "Present",
             },
             location: "Orlando, FL",
@@ -164,8 +164,8 @@ let rxJSON = {
         {
             name: "High School",
             date: {
-                from: "Aug 2017",
-                to: "May 2021",
+                from: "2017-08",
+                to: "2021-05",
             },
             location: "Orlando, FL",
             degree: "Name available upon request",
@@ -197,8 +197,8 @@ let rxJSON = {
         {
             role: "Junior Software Developer (Techranger)",
             date: {
-                from: "Oct 2021",
-                to: "Mar 2022",
+                from: "2021-10",
+                to: "2022-03",
             },
             location: "Orlando, FL",
             company: "UCF Center for Distributed Learning",
@@ -223,8 +223,8 @@ let rxJSON = {
         {
             role: "Summer Intern",
             date: {
-                from: "Jun 2019",
-                to: "Aug 2019",
+                from: "2019-06",
+                to: "2019-08",
             },
             location: "Orlando, FL",
             company: "Gizmo Productions",
@@ -248,6 +248,42 @@ export default function Index() {
         )
         sections.forEach(section => observer.observe(document.querySelector("#" + section)))
     }, [])
+
+    // Finds the interval between two Date objects and returns a string
+    // Ex:
+    //      "2 months"
+    //      "1 year"
+    //      "2 years, 3 months"
+    function dateLength(from, to) {
+        from = new Date(from)
+
+        if (to == null || to == "Present") to = new Date()
+        else to = new Date(to)
+
+        from.setUTCHours(0, 0, 0, 0)
+        to.setUTCHours(0, 0, 0, 0)
+
+        let years = to.getUTCFullYear() - from.getUTCFullYear()
+        let months = to.getUTCMonth() - from.getUTCMonth()
+        if (months < 0) {
+            years--
+            months += 12
+        }
+
+        let str = ""
+        if (years > 0) str += years + " yr" + (years > 1 ? "s" : "")
+        if (months > 0) str += (str ? ", " : "") + months + " mo" + (months > 1 ? "s" : "")
+        return str
+    }
+
+    function toMonthYearString(date) {
+        if (date == null || date == "Present") return date
+        return new Date(date).toLocaleString("en-US", {
+            month: "short",
+            year: "numeric",
+            timeZone: "UTC",
+        })
+    }
 
     return (
         <>
@@ -352,7 +388,8 @@ export default function Index() {
                                     <div key={i} className="w-full">
                                         <h3 className="mt-8 w-full">{name}</h3>
                                         <div className="w-full border-b border-gray-50 border-opacity-20 pb-2 text-xs font-medium opacity-60">
-                                            {date.from} - {date.to}
+                                            {toMonthYearString(date.from)} -{" "}
+                                            {toMonthYearString(date.to)}
                                             <span className="mx-3">•</span>
                                             {location}
                                             {degree && <span className="mx-3">•</span>}
@@ -411,7 +448,14 @@ export default function Index() {
                                     <div key={i} className="w-full">
                                         <h3 className="mt-8 w-full">{role}</h3>
                                         <div className="w-full border-b border-gray-50 border-opacity-20 pb-2 text-xs font-medium opacity-60">
-                                            {date.from} - {date.to}
+                                            {toMonthYearString(date.from)} -{" "}
+                                            {toMonthYearString(date.to)}
+                                            {" (" +
+                                                dateLength(
+                                                    date.from,
+                                                    date.to == "Present" ? null : date.to
+                                                ) +
+                                                ")"}
                                             {location && <span className="mx-3">•</span>}
                                             {location}
                                             {company && <span className="mx-3">•</span>}
