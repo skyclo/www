@@ -35,10 +35,7 @@ export default function Index() {
 
     useEffect(() => {
         const observer = new IntersectionObserver(
-            sections =>
-                sections.forEach(
-                    s => s.isIntersecting && setTimeout(() => setCurrentSection(s.target.id), 100)
-                ),
+            sections => sections.forEach(s => s.isIntersecting && setCurrentSection(s.target.id)),
             { threshold: 0.5 }
         )
         sections.forEach(section => observer.observe(document.querySelector("#" + section.id)))

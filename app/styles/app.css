@@ -815,6 +815,14 @@ h4 {
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
+.bg-transparent {
+  background-color: transparent;
+}
+
+.bg-black\/0 {
+  background-color: rgb(0 0 0 / 0);
+}
+
 .bg-\[radial-gradient\(at_right_center\2c _theme\(colors\.purple\.500\/28\%\)_0\%\2c _\#00000000_65\%\)\] {
   background-image: radial-gradient(at right center, rgb(168 85 247 / 28%) 0%, #00000000 65%);
 }
