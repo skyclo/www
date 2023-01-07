@@ -1,17 +1,15 @@
 export default function Skill({ item: skill, ...props }) {
     return (
         <div className="w-full" {...props}>
-            <h3 className="mt-8 w-full border-b border-gray-50 border-opacity-20 text-left">
-                {skill.title}
-            </h3>
-            <div className="mt-2 mb-6 mr-auto flex flex-row flex-wrap space-x-8">
+            <h3 className="group-header group-divider text-left">{skill.title}</h3>
+            <div className="mt-1 flex flex-row flex-wrap gap-x-4 gap-y-1 sm:mb-2 md:mt-2 md:mb-6 md:gap-x-8 md:gap-y-3">
                 {skill.skills.map(({ icon, name, color }, j) => {
                     if (!icon || !name) return null
                     const Icon = icon
                     return (
-                        <div key={j} className="flex flex-row">
-                            <Icon title={name} className="h-4 w-4" color={color} />
-                            <div className="my-auto ml-2 text-sm font-medium text-gray-50">
+                        <div key={j} className="flex flex-shrink-0 flex-row">
+                            <Icon title={name} className="h-3 w-3 md:h-4 md:w-4" color={color} />
+                            <div className="my-auto ml-1 text-xs font-medium text-gray-50 md:ml-2 md:text-sm">
                                 {name}
                             </div>
                         </div>

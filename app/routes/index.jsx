@@ -53,7 +53,7 @@ export default function Index() {
         <>
             <nav
                 className={
-                    "absolute top-0 right-0 flex h-full flex-col " +
+                    "absolute top-0 right-0 hidden h-full flex-col md:flex " +
                     (navVisible ? "opacity-100" : "opacity-0")
                 }>
                 <div className="my-auto flex flex-col space-y-4 bg-[radial-gradient(at_right_center,_theme(colors.purple.500/28%)_0%,_#00000000_65%)] px-8 py-28">
@@ -130,7 +130,7 @@ export default function Index() {
                                 {section?.header}
                             </h2>
                         )}
-                        <div className="mx-auto flex max-w-7xl flex-col">
+                        <div className="mx-auto flex flex-col px-4 md:px-12 lg:max-w-7xl lg:px-0">
                             {section?.children && <section.children />}
                             {section?.mappedComponent &&
                                 rxJSON?.[section?.id]?.map((item, i) => {
