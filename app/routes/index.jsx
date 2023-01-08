@@ -10,8 +10,8 @@ export default function Index() {
         () =>
             document.querySelector("#" + rx?.[0]?.id)?.scrollIntoView({
                 behavior: "smooth",
-                block: "start",
-                inline: "nearest",
+                block: "center",
+                inline: "center",
             }),
         []
     )
