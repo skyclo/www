@@ -1,5 +1,4 @@
 export default function Social({ item: social, ...props }) {
-    console.log(social)
     if (!social?.icon?.name) return null
 
     return (
