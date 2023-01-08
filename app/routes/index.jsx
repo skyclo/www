@@ -1,60 +1,14 @@
 import { useEffect, useRef, useState } from "react"
-import Certification from "~/components/Certification"
-import Institution from "~/components/Institution"
-import Intro from "~/components/Intro"
-import Job from "~/components/Job"
-import Project from "~/components/Project"
-import rxJSON from "~/components/rx"
-import Skill from "~/components/Skill"
-
-let sections = [
-    {
-        id: "intro",
-        bg: "gradient-in",
-        children: Intro,
-    },
-    {
-        id: "skills",
-        header: "Skills",
-        mappedComponent: Skill,
-    },
-    {
-        id: "education",
-        header: "Education",
-        mappedComponent: Institution,
-    },
-    {
-        id: "experience",
-        header: "Work Experience",
-        mappedComponent: Job,
-    },
-    {
-        id: "certifications",
-        header: "Certifications",
-        grid: true,
-        mappedComponent: Certification,
-    },
-    {
-        id: "projects",
-        header: "Projects",
-        mappedComponent: Project,
-    },
-    {
-        id: "contact",
-        bg: "gradient-out",
-        header: "Contact",
-        children: () => <p className="mt-8">Coming Soon</p>,
-    },
-]
+import rx from "~/components/rx"
 
 export default function Index() {
-    let [currentSection, setCurrentSection] = useState(sections?.[0]?.id)
+    let [currentSection, setCurrentSection] = useState(rx?.[0]?.id)
     let [navVisible, setNavVisible] = useState(false)
     let timeout = useRef(null)
 
     useEffect(
         () =>
-            document.querySelector("#" + sections?.[0]?.id)?.scrollIntoView({
+            document.querySelector("#" + rx?.[0]?.id)?.scrollIntoView({
                 behavior: "smooth",
                 block: "start",
                 inline: "nearest",
@@ -70,22 +24,22 @@ export default function Index() {
                     (navVisible ? "opacity-100" : "opacity-0")
                 }>
                 <div className="my-auto flex flex-col space-y-4 bg-[radial-gradient(at_right_center,_theme(colors.purple.500/28%)_0%,_#00000000_65%)] px-8 py-28">
-                    {sections.map((section, i) => (
+                    {rx.map((section, i) => (
                         <div
                             key={i}
                             className={
                                 "w-2 cursor-pointer rounded-full " +
-                                (currentSection == section.id
+                                (currentSection == section?.id
                                     ? "bg-gradient-multi h-6"
                                     : "h-2 bg-gray-500")
                             }
                             onClick={e => {
                                 e.preventDefault()
-                                setCurrentSection(section.id)
+                                setCurrentSection(section?.id)
 
                                 setTimeout(
                                     () =>
-                                        document.querySelector("#" + section.id)?.scrollIntoView({
+                                        document.querySelector("#" + section?.id)?.scrollIntoView({
                                             behavior: "smooth",
                                             block: "start",
                                             inline: "nearest",
@@ -93,25 +47,25 @@ export default function Index() {
                                     200
                                 )
                             }}
-                            title={section.header}></div>
+                            title={section?.data?.header}></div>
                     ))}
                 </div>
             </nav>
             <main
                 className="glowback h-screen w-screen snap-y snap-mandatory overflow-hidden bg-black bg-no-repeat"
                 onWheel={e => {
-                    let sectionIndex = sections?.findIndex(sect => sect?.id == currentSection)
+                    let sectionIndex = rx?.findIndex(sect => sect?.id == currentSection)
                     if (sectionIndex == -1) return
 
                     let nextSectionIndex = (e.deltaY < 0 ? -1 : 1) + sectionIndex
-                    if (nextSectionIndex < 0 || nextSectionIndex >= sections.length) return
+                    if (nextSectionIndex < 0 || nextSectionIndex >= rx.length) return
 
-                    setCurrentSection(sections?.[nextSectionIndex]?.id)
+                    setCurrentSection(rx?.[nextSectionIndex]?.id)
 
                     setTimeout(
                         () =>
                             document
-                                .querySelector("#" + sections?.[nextSectionIndex]?.id)
+                                .querySelector("#" + rx?.[nextSectionIndex]?.id)
                                 ?.scrollIntoView({
                                     behavior: "smooth",
                                     block: "start",
@@ -124,33 +78,33 @@ export default function Index() {
                     clearTimeout(timeout.current)
                     timeout.current = setTimeout(() => setNavVisible(false), 2000)
                 }}>
-                {sections.map((section, i) => (
+                {rx.map((section, i) => (
                     <section
                         key={i}
-                        id={section.id}
+                        id={section?.id}
                         className={
                             "flex h-screen w-screen snap-start snap-always flex-col items-center justify-center " +
-                            (section?.bg === "gradient-in"
+                            (section?.styles?.bg === "gradient-in"
                                 ? "bg-gradient-to-b from-black/0 to-black/100"
-                                : section?.bg === "gradient-out"
+                                : section?.styles?.bg === "gradient-out"
                                 ? "bg-gradient-to-t from-black/0 to-black/100"
                                 : "bg-black")
                         }>
-                        {section?.header && (
+                        {section?.data?.header && (
                             <h2 className="bg-gradient-multi text-glow bg-clip-text text-center text-transparent">
-                                {section?.header}
+                                {section?.data?.header}
                             </h2>
                         )}
-                        {section?.children && <section.children />}
+                        {section?.children && <section.children data={section?.data} />}
                         <div
                             className={
                                 "mt-3 px-4 md:mt-4 md:px-12 lg:mt-6 2xl:max-w-7xl 2xl:px-0 " +
-                                (section?.grid
+                                (section?.styles?.grid
                                     ? "grid auto-cols-fr grid-flow-row auto-rows-fr grid-cols-1 gap-x-4 gap-y-4 md:grid-cols-2 "
                                     : "flex flex-col space-y-3 md:space-y-6 lg:space-y-8 ")
                             }>
                             {section?.mappedComponent &&
-                                rxJSON?.[section?.id]?.map((item, i) => {
+                                section?.data?.[section?.id || "items"]?.map((item, i) => {
                                     if (!item) return null
                                     let MappedComponent = section?.mappedComponent
                                     return <MappedComponent item={item} key={i} />
