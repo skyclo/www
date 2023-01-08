@@ -356,19 +356,19 @@ export default [
             header: "Certifications",
             certifications: [
                 {
-                    name: "Adobe Certified Associate",
-                    date: "2020-03",
-                    organization: {
-                        name: "Adobe",
-                        image: "/images/adobe.jpeg",
-                    },
-                },
-                {
                     name: "Modeling and Simulation Certification",
                     date: "2021-03",
                     organization: {
                         name: "National Center for Simulation",
                         image: "/images/ncs.jpeg",
+                    },
+                },
+                {
+                    name: "Adobe Certified Associate",
+                    date: "2020-03",
+                    organization: {
+                        name: "Adobe",
+                        image: "/images/adobe.jpeg",
                     },
                 },
                 {
