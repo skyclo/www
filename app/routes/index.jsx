@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import rx from "~/components/rx"
 
 export default function Index() {
-    let [currentSection, setCurrentSection] = useState(rx?.[0]?.id)
+    let [currentSection, setCurrentSection] = useState(0)
     let [navVisible, setNavVisible] = useState(false)
     let timeout = useRef(null)
 
@@ -29,13 +29,11 @@ export default function Index() {
                             key={i}
                             className={
                                 "w-2 cursor-pointer rounded-full " +
-                                (currentSection == section?.id
-                                    ? "bg-gradient-multi h-6"
-                                    : "h-2 bg-gray-500")
+                                (currentSection == i ? "bg-gradient-multi h-6" : "h-2 bg-gray-500")
                             }
                             onClick={e => {
                                 e.preventDefault()
-                                setCurrentSection(section?.id)
+                                setCurrentSection(i)
 
                                 setTimeout(
                                     () =>
@@ -54,13 +52,12 @@ export default function Index() {
             <main
                 className="glowback h-screen w-screen snap-y snap-mandatory overflow-hidden bg-black bg-no-repeat"
                 onWheel={e => {
-                    let sectionIndex = rx?.findIndex(sect => sect?.id == currentSection)
-                    if (sectionIndex == -1) return
+                    if (currentSection == -1) return
 
-                    let nextSectionIndex = (e.deltaY < 0 ? -1 : 1) + sectionIndex
+                    let nextSectionIndex = (e.deltaY < 0 ? -1 : 1) + currentSection
                     if (nextSectionIndex < 0 || nextSectionIndex >= rx.length) return
 
-                    setCurrentSection(rx?.[nextSectionIndex]?.id)
+                    setCurrentSection(nextSectionIndex)
 
                     setTimeout(
                         () =>
