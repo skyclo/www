@@ -2,7 +2,7 @@ import toMonthYearString from "~/utils/toMonthYearString"
 
 export default function Award({ item: award, ...props }) {
     return (
-        <div className="flex w-full flex-grow flex-row rounded-md px-4 pb-3 pt-4 ring-1 ring-gray-50 ring-opacity-20">
+        <div className="flex w-full flex-grow flex-row rounded-md px-4 pb-3 pt-4 ring-1 ring-gray-50 ring-opacity-20 hover:ring-opacity-30">
             <img
                 src={award?.organization?.image}
                 alt={award?.organization?.name + " Logo"}

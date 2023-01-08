@@ -139,7 +139,14 @@ export default function Index() {
                     </section>
                 ))}
                 <div className="relative bottom-0 mx-auto -mt-28 flex w-full flex-col py-12 text-center text-xs font-semibold opacity-20">
-                    (C) 2018-2022 Conor Daly (Skyclo)
+                    <span>© 2018-2022 Conor Daly (Skyclo)</span>
+                    <span>
+                        <a
+                            href="https://github.com/skyclo/www"
+                            className="text-2xs font-normal hover:underline">
+                            Source
+                        </a>
+                    </span>
                 </div>
             </main>
         </>

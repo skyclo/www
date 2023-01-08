@@ -2,7 +2,7 @@ import toMonthYearString from "~/utils/toMonthYearString"
 
 export default function Certification({ item: cert, ...props }) {
     return (
-        <div className="flex w-full flex-grow flex-row rounded-md px-4 pb-3 pt-4 ring-1 ring-gray-50 ring-opacity-20">
+        <div className="flex w-full flex-grow flex-row rounded-md px-4 pb-3 pt-4 ring-1 ring-gray-50 ring-opacity-20 hover:ring-opacity-30">
             <img
                 src={cert?.organization?.image}
                 alt={cert?.organization?.name + " Logo"}
