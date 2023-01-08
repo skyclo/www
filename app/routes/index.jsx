@@ -23,7 +23,18 @@ export default function Index() {
                     "absolute top-0 right-0 hidden h-full flex-col md:flex " +
                     (navVisible ? "opacity-100" : "opacity-0")
                 }>
-                <div className="my-auto flex flex-col space-y-4 bg-[radial-gradient(at_right_center,_theme(colors.purple.500/28%)_0%,_#00000000_65%)] px-8 py-28">
+                <div
+                    className="my-auto flex flex-col space-y-4 bg-[radial-gradient(at_right_center,_theme(colors.purple.500/28%)_0%,_#00000000_65%)] px-8 py-28"
+                    onMouseOver={() => {
+                        clearTimeout(timeout.current)
+                        setNavVisible(true)
+                    }}
+                    onMouseLeave={() => {
+                        if (!navVisible) return
+
+                        clearTimeout(timeout.current)
+                        timeout.current = setTimeout(() => setNavVisible(false), 2000)
+                    }}>
                     {rx.map((section, i) => (
                         <div
                             key={i}
