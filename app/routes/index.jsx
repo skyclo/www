@@ -16,28 +16,46 @@ export default function Index() {
         []
     )
 
-    function handleScroll(e) {
-        if (currentSection == -1) return
+    useEffect(() => {
+        function handleWheelEvent(e) {
+            requestScroll((e.deltaY < 0 ? -1 : 1) + currentSection)
+        }
 
-        let nextSectionIndex = (e.deltaY < 0 ? -1 : 1) + currentSection
-        if (nextSectionIndex < 0 || nextSectionIndex >= rx.length) return
+        function handleKeyDownEvent(e) {
+            if (e.key == "ArrowUp") requestScroll(currentSection - 1)
+            if (e.key == "ArrowDown") requestScroll(currentSection + 1)
+            if (e.key == "Home") requestScroll(0)
+            if (e.key == "End") requestScroll(rx.length - 1)
+            if (e.key == "PageUp") requestScroll(Math.max(currentSection - 5, 0))
+            if (e.key == "PageDown") requestScroll(Math.min(currentSection + 5, rx.length - 1))
+        }
+        function requestScroll(index) {
+            if (index < 0 || index >= rx.length) return
+            setCurrentSection(index)
 
-        setCurrentSection(nextSectionIndex)
+            setTimeout(
+                () =>
+                    document.querySelector("#" + rx?.[index]?.id)?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                        inline: "nearest",
+                    }),
+                200
+            )
 
-        setTimeout(
-            () =>
-                document.querySelector("#" + rx?.[nextSectionIndex]?.id)?.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start",
-                    inline: "nearest",
-                }),
-            200
-        )
+            setNavVisible(true)
+            clearTimeout(timeout.current)
+            timeout.current = setTimeout(() => setNavVisible(false), 2000)
+        }
 
-        setNavVisible(true)
-        clearTimeout(timeout.current)
-        timeout.current = setTimeout(() => setNavVisible(false), 2000)
-    }
+        document.addEventListener("wheel", handleWheelEvent)
+        document.addEventListener("keydown", handleKeyDownEvent)
+
+        return () => {
+            document.removeEventListener("wheel", handleWheelEvent)
+            document.removeEventListener("keydown", handleKeyDownEvent)
+        }
+    }, [currentSection])
 
     return (
         <>
@@ -83,9 +101,7 @@ export default function Index() {
                     ))}
                 </div>
             </nav>
-            <main
-                className="glowback h-screen w-screen snap-y snap-mandatory overflow-hidden bg-black bg-no-repeat"
-                onWheel={handleScroll}>
+            <main className="glowback h-screen w-screen snap-y snap-mandatory overflow-hidden bg-black bg-no-repeat">
                 {rx.map((section, i) => (
                     <section
                         key={i}
