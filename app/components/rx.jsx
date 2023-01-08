@@ -157,6 +157,123 @@ export default [
         },
     },
     {
+        id: "projects",
+        styles: {},
+        children: null,
+        mappedComponent: Project,
+        data: {
+            header: "Projects",
+            projects: [
+                {
+                    name: "Ideoxan",
+                    date: {
+                        from: "2020-03",
+                        to: "Present",
+                    },
+                    link: "https://ideoxan.com",
+                    image: "/images/ideoxan.png",
+                    description: [
+                        "SaaS Edtech platform offering free content for aspiring programmers at K-12 institutions",
+                        "Written in Remix.run (React) and uses Supabase. Hosted on Cloudflare Workers and AWS.",
+                        "Maintaining an open-source repository for website with over 30 stars and a dozen contributors",
+                    ],
+                    stack: [
+                        { icon: ReactJs, name: "React", color: "#61DAFB" },
+                        { icon: Javascript, name: "JavaScript", color: "#F7DF1E" },
+                        { icon: Remix, name: "Remix", color: "#FFFFFF" },
+                        { icon: Supabase, name: "Supabase", color: "#FFFFFF" },
+                        { icon: Cloudflare, name: "Cloudflare", color: "#F38020" },
+                        { icon: Amazonaws, name: "AWS", color: "#FF9900" },
+                    ],
+                },
+                {
+                    name: "WebEmu",
+                    date: {
+                        from: "2021-08",
+                        to: "Present",
+                    },
+                    link: null,
+                    image: "/images/webemu.png",
+                    description: [
+                        "An emerging web technology that bridges the gap between the browser and virtualization",
+                        "Written in JavaScript and WebAssembly",
+                    ],
+                    stack: [
+                        { icon: Javascript, name: "JavaScript", color: "#F7DF1E" },
+                        { icon: Webassembly, name: "WebAssembly", color: "#654FF0" },
+                        { icon: Linux, name: "Linux", color: "#FFFFFF" },
+                        { icon: Qemu, name: "QEMU", color: "#FF6600" },
+                    ],
+                },
+                {
+                    name: "node-scdl",
+                    date: {
+                        from: "2020-04",
+                        to: "2021-05",
+                    },
+                    link: "https://github.com/skyclo/node-scdl",
+                    image: "/images/node-scdl.png",
+                    description: [
+                        "An easy to use, minimal dependency Soundcloud song downloader.",
+                        "Makes use of the SoundcloudAPI v1 and fetches the song based on provided metadata",
+                        "Over 600 downloads on NPM",
+                    ],
+                    stack: [{ icon: Javascript, name: "JavaScript", color: "#F7DF1E" }],
+                },
+            ],
+        },
+    },
+    {
+        id: "jobs",
+        styles: {},
+        children: null,
+        mappedComponent: Job,
+        data: {
+            header: "Experience",
+            jobs: [
+                {
+                    role: "Junior Software Developer (Techranger)",
+                    date: {
+                        from: "2021-10",
+                        to: "2022-03",
+                    },
+                    location: "Orlando, FL",
+                    company: "UCF Center for Distributed Learning",
+                    description: [
+                        "Cataloged and QA-ed 170 chapters of the University's official Chemistry Textbook",
+                        "Created a suite of 4 automation tools for CDL projects to conduct QA tests and track project progress",
+                    ],
+                },
+                {
+                    role: "Freelance Developer",
+                    date: {
+                        from: "2018",
+                        to: "2019",
+                    },
+                    location: "Orlando, FL",
+                    company: null,
+                    description: [
+                        "Developed a customer service ticketing and management system for a local business",
+                        "Completed over 14 contracts for website design, software development, OSINT research, etc.",
+                    ],
+                },
+                {
+                    role: "Summer Intern",
+                    date: {
+                        from: "2019-06",
+                        to: "2019-08",
+                    },
+                    location: "Orlando, FL",
+                    company: "Gizmo Productions",
+                    description: [
+                        "Maintained critical computer services and designed mockups for a company website redesign",
+                        "Worked directly with 4 clients to coordinate projects and created a final project with fellow interns",
+                    ],
+                },
+            ],
+        },
+    },
+    {
         id: "education",
         styles: {},
         children: null,
@@ -229,56 +346,6 @@ export default [
         },
     },
     {
-        id: "jobs",
-        styles: {},
-        children: null,
-        mappedComponent: Job,
-        data: {
-            header: "Experience",
-            jobs: [
-                {
-                    role: "Junior Software Developer (Techranger)",
-                    date: {
-                        from: "2021-10",
-                        to: "2022-03",
-                    },
-                    location: "Orlando, FL",
-                    company: "UCF Center for Distributed Learning",
-                    description: [
-                        "Cataloged and QA-ed 170 chapters of the University's official Chemistry Textbook",
-                        "Created a suite of 4 automation tools for CDL projects to conduct QA tests and track project progress",
-                    ],
-                },
-                {
-                    role: "Freelance Developer",
-                    date: {
-                        from: "2018",
-                        to: "2019",
-                    },
-                    location: "Orlando, FL",
-                    company: null,
-                    description: [
-                        "Developed a customer service ticketing and management system for a local business",
-                        "Completed over 14 contracts for website design, software development, OSINT research, etc.",
-                    ],
-                },
-                {
-                    role: "Summer Intern",
-                    date: {
-                        from: "2019-06",
-                        to: "2019-08",
-                    },
-                    location: "Orlando, FL",
-                    company: "Gizmo Productions",
-                    description: [
-                        "Maintained critical computer services and designed mockups for a company website redesign",
-                        "Worked directly with 4 clients to coordinate projects and created a final project with fellow interns",
-                    ],
-                },
-            ],
-        },
-    },
-    {
         id: "certifications",
         styles: {
             grid: true,
@@ -319,73 +386,6 @@ export default [
                         name: "Microsoft",
                         image: "/images/microsoft.jpeg",
                     },
-                },
-            ],
-        },
-    },
-    {
-        id: "projects",
-        styles: {},
-        children: null,
-        mappedComponent: Project,
-        data: {
-            header: "Projects",
-            projects: [
-                {
-                    name: "Ideoxan",
-                    date: {
-                        from: "2020-03",
-                        to: "Present",
-                    },
-                    link: "https://ideoxan.com",
-                    image: "/images/ideoxan.png",
-                    description: [
-                        "SaaS Edtech platform offering free content for aspiring programmers at K-12 institutions",
-                        "Written in Remix.run (React) and uses Supabase. Hosted on Cloudflare Workers and AWS.",
-                        "Maintaining an open-source repository for website with over 30 stars and a dozen contributors",
-                    ],
-                    stack: [
-                        { icon: ReactJs, name: "React", color: "#61DAFB" },
-                        { icon: Javascript, name: "JavaScript", color: "#F7DF1E" },
-                        { icon: Remix, name: "Remix", color: "#FFFFFF" },
-                        { icon: Supabase, name: "Supabase", color: "#FFFFFF" },
-                        { icon: Cloudflare, name: "Cloudflare", color: "#F38020" },
-                        { icon: Amazonaws, name: "AWS", color: "#FF9900" },
-                    ],
-                },
-                {
-                    name: "WebEmu",
-                    date: {
-                        from: "2021-08",
-                        to: "Present",
-                    },
-                    link: null,
-                    image: "/images/webemu.png",
-                    description: [
-                        "An emerging web technology that bridges the gap between the browser and virtualization",
-                        "Written in JavaScript and WebAssembly",
-                    ],
-                    stack: [
-                        { icon: Javascript, name: "JavaScript", color: "#F7DF1E" },
-                        { icon: Webassembly, name: "WebAssembly", color: "#654FF0" },
-                        { icon: Linux, name: "Linux", color: "#FFFFFF" },
-                        { icon: Qemu, name: "QEMU", color: "#FF6600" },
-                    ],
-                },
-                {
-                    name: "node-scdl",
-                    date: {
-                        from: "2020-04",
-                        to: "2021-05",
-                    },
-                    link: "https://github.com/skyclo/node-scdl",
-                    image: "/images/node-scdl.png",
-                    description: [
-                        "An easy to use, minimal dependency Soundcloud song downloader.",
-                        "Makes use of the SoundcloudAPI v1 and fetches the song based on provided metadata",
-                        "Over 600 downloads on NPM",
-                    ],
-                    stack: [{ icon: Javascript, name: "JavaScript", color: "#F7DF1E" }],
                 },
             ],
         },
