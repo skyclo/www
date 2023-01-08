@@ -16,6 +16,29 @@ export default function Index() {
         []
     )
 
+    function handleScroll(e) {
+        if (currentSection == -1) return
+
+        let nextSectionIndex = (e.deltaY < 0 ? -1 : 1) + currentSection
+        if (nextSectionIndex < 0 || nextSectionIndex >= rx.length) return
+
+        setCurrentSection(nextSectionIndex)
+
+        setTimeout(
+            () =>
+                document.querySelector("#" + rx?.[nextSectionIndex]?.id)?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                    inline: "nearest",
+                }),
+            200
+        )
+
+        setNavVisible(true)
+        clearTimeout(timeout.current)
+        timeout.current = setTimeout(() => setNavVisible(false), 2000)
+    }
+
     return (
         <>
             <nav
@@ -62,30 +85,7 @@ export default function Index() {
             </nav>
             <main
                 className="glowback h-screen w-screen snap-y snap-mandatory overflow-hidden bg-black bg-no-repeat"
-                onWheel={e => {
-                    if (currentSection == -1) return
-
-                    let nextSectionIndex = (e.deltaY < 0 ? -1 : 1) + currentSection
-                    if (nextSectionIndex < 0 || nextSectionIndex >= rx.length) return
-
-                    setCurrentSection(nextSectionIndex)
-
-                    setTimeout(
-                        () =>
-                            document
-                                .querySelector("#" + rx?.[nextSectionIndex]?.id)
-                                ?.scrollIntoView({
-                                    behavior: "smooth",
-                                    block: "start",
-                                    inline: "nearest",
-                                }),
-                        200
-                    )
-
-                    setNavVisible(true)
-                    clearTimeout(timeout.current)
-                    timeout.current = setTimeout(() => setNavVisible(false), 2000)
-                }}>
+                onWheel={handleScroll}>
                 {rx.map((section, i) => (
                     <section
                         key={i}
