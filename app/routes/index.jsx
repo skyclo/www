@@ -128,11 +128,13 @@ export default function Index() {
                                     : "flex flex-col space-y-3 md:space-y-6 lg:space-y-8 ")
                             }>
                             {section?.mappedComponent &&
-                                section?.data?.[section?.id || "items"]?.map((item, i) => {
-                                    if (!item) return null
-                                    let MappedComponent = section?.mappedComponent
-                                    return <MappedComponent item={item} key={i} />
-                                })}
+                                (section?.data?.[section?.id] || section?.data?.["items"])?.map(
+                                    (item, i) => {
+                                        if (!item) return null
+                                        let MappedComponent = section?.mappedComponent
+                                        return <MappedComponent item={item} key={i} />
+                                    }
+                                )}
                         </div>
                     </section>
                 ))}

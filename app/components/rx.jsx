@@ -1,4 +1,4 @@
-import { Github, LinkedinIcon, TwitterIcon } from "lucide-react"
+import { GithubIcon, LinkedinIcon, Mails, TwitterIcon } from "lucide-react"
 import {
     Adobe,
     Amazonaws,
@@ -10,13 +10,14 @@ import {
     Docker,
     Firebase,
     Git,
-    Github as GithubIcon,
+    Github,
     Googlecloud,
     Heroku,
     Html5,
     Inkscape,
     Javascript,
     Jest,
+    Linkedin,
     Linux,
     Microsoftoffice,
     Mongodb,
@@ -29,6 +30,7 @@ import {
     Sqlite,
     Supabase,
     Tailwindcss,
+    Twitter,
     Typescript,
     Webassembly,
 } from "@icons-pack/react-simple-icons"
@@ -39,6 +41,7 @@ import Job from "~/components/Job"
 import Certification from "~/components/Certification"
 import Project from "~/components/Project"
 import Award from "~/components/Award"
+import Social from "~/components/Social"
 
 export default [
     {
@@ -55,7 +58,7 @@ export default [
             items: [
                 {
                     platform: "Github",
-                    icon: Github,
+                    icon: GithubIcon,
                     link: "https://github.com/skyclo",
                 },
                 {
@@ -141,7 +144,7 @@ export default [
                     title: "Misc",
                     items: [
                         {
-                            icon: GithubIcon,
+                            icon: Github,
                             name: "Open Source & Project Management",
                             color: "#ecebeb",
                         },
@@ -472,11 +475,46 @@ export default [
         id: "contact",
         styles: {
             bg: "gradient-out",
+            grid: true,
         },
-        children: () => <p className="mt-8">Coming Soon</p>,
-        mappedComponent: null,
+        children: null,
+        mappedComponent: Social,
         data: {
             header: "Contact",
+            items: [
+                {
+                    name: "Email",
+                    link: "mailto:hello@skyclo.dev",
+                    icon: {
+                        name: Mails,
+                        color: "#FFFFFF",
+                    },
+                },
+                {
+                    name: "LinkedIn",
+                    link: "https://www.linkedin.com/in/skyclo/",
+                    icon: {
+                        name: Linkedin,
+                        color: "#0A66C2",
+                    },
+                },
+                {
+                    name: "GitHub",
+                    link: "https://github.com/skyclo",
+                    icon: {
+                        name: Github,
+                        color: "#ecebeb",
+                    },
+                },
+                {
+                    name: "Twitter",
+                    link: "https://twitter.com/skyclo",
+                    icon: {
+                        name: Twitter,
+                        color: "#1DA1F2",
+                    },
+                },
+            ],
         },
     },
 ]
