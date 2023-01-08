@@ -38,6 +38,7 @@ import Institution from "~/components/Institution"
 import Job from "~/components/Job"
 import Certification from "~/components/Certification"
 import Project from "~/components/Project"
+import Award from "~/components/Award"
 
 export default [
     {
@@ -385,6 +386,83 @@ export default [
                     organization: {
                         name: "Microsoft",
                         image: "/images/microsoft.jpeg",
+                    },
+                },
+            ],
+        },
+    },
+    {
+        id: "awards",
+        styles: {
+            grid: true,
+        },
+        children: null,
+        mappedComponent: Award,
+        data: {
+            header: "Awards and Recognition",
+            awards: [
+                {
+                    name: "2021 AP Scholar with Distinction",
+                    date: "2021-06",
+                    organization: {
+                        name: "Collegeboard",
+                        image: "/images/collegeboard.jpeg",
+                    },
+                },
+                {
+                    name: "2021 Graphic Design Competition, 5th Place",
+                    date: "2021-01",
+                    organization: {
+                        name: "Business Professionals of America",
+                        image: "/images/bpa.jpeg",
+                    },
+                },
+                {
+                    name: "Best in Show Award, 5th Place",
+                    date: "2020-11",
+                    organization: {
+                        name: "National Scholastic Press Association",
+                        image: "/images/nationalscholasticpressassociation.jpeg",
+                    },
+                },
+                {
+                    name: "2020 AP Scholar with Distinction",
+                    date: "2020-05",
+                    organization: {
+                        name: "Collegeboard",
+                        image: "/images/collegeboard.jpeg",
+                    },
+                },
+                {
+                    name: "NCS Team Orlando Day Competition, 4th Place",
+                    date: "2020-02",
+                    organization: {
+                        name: "National Center for Simulation",
+                        image: "/images/ncs.jpeg",
+                    },
+                },
+                {
+                    name: "2018 World Championship, Design Award",
+                    date: "2018-03",
+                    organization: {
+                        name: "FIRST FTC Robotics Competition",
+                        image: "/images/first.jpeg",
+                    },
+                },
+                {
+                    name: "2018 Florida Championship, Inspire Award",
+                    date: "2018-01",
+                    organization: {
+                        name: "FIRST FTC Robotics Competition",
+                        image: "/images/first.jpeg",
+                    },
+                },
+                {
+                    name: "Presidential Award for Academic Excellence",
+                    date: "2016-04",
+                    organization: {
+                        name: "US Department of Education",
+                        image: "/images/usdoe.jpeg",
                     },
                 },
             ],
