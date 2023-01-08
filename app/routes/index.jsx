@@ -3,6 +3,7 @@ import Certification from "~/components/Certification"
 import Institution from "~/components/Institution"
 import Intro from "~/components/Intro"
 import Job from "~/components/Job"
+import Project from "~/components/Project"
 import rxJSON from "~/components/rx"
 import Skill from "~/components/Skill"
 
@@ -32,6 +33,11 @@ let sections = [
         header: "Certifications",
         grid: true,
         mappedComponent: Certification,
+    },
+    {
+        id: "projects",
+        header: "Projects",
+        mappedComponent: Project,
     },
     {
         id: "contact",
@@ -138,10 +144,10 @@ export default function Index() {
                         {section?.children && <section.children />}
                         <div
                             className={
-                                "mt-3 flex px-4 md:mt-4 md:px-12 lg:mt-6 lg:max-w-7xl lg:px-0 " +
+                                "mt-3 px-4 md:mt-4 md:px-12 lg:mt-6 2xl:max-w-7xl 2xl:px-0 " +
                                 (section?.grid
-                                    ? "grid auto-cols-fr grid-flow-row auto-rows-fr grid-cols-1 gap-x-4 gap-y-4 md:grid-cols-2"
-                                    : "flex flex-col space-y-3 md:space-y-6 lg:space-y-8")
+                                    ? "grid auto-cols-fr grid-flow-row auto-rows-fr grid-cols-1 gap-x-4 gap-y-4 md:grid-cols-2 "
+                                    : "flex flex-col space-y-3 md:space-y-6 lg:space-y-8 ")
                             }>
                             {section?.mappedComponent &&
                                 rxJSON?.[section?.id]?.map((item, i) => {

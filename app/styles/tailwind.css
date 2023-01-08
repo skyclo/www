@@ -59,11 +59,10 @@
     }
 
     .group-header {
-        @apply w-full;
     }
 
     .group-subheader {
-        @apply w-full text-2xs font-medium opacity-60 md:pb-2 lg:text-xs;
+        @apply text-2xs font-medium opacity-60 md:pb-2 lg:text-xs;
     }
 
     .group-divider {

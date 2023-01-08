@@ -2,7 +2,7 @@ import toMonthYearString from "~/utils/toMonthYearString"
 
 export default function Institution({ item: institution, ...props }) {
     return (
-        <div className="w-full" {...props}>
+        <div className="" {...props}>
             <h3 className="group-header">{institution.name}</h3>
             <div className="group-subheader group-divider">
                 {toMonthYearString(institution.date.from)} -{" "}

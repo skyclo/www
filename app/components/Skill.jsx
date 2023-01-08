@@ -1,6 +1,6 @@
 export default function Skill({ item: skill, ...props }) {
     return (
-        <div className="w-full" {...props}>
+        <div className="" {...props}>
             <h3 className="group-header group-divider text-left">{skill.title}</h3>
             <div className="mt-1 flex flex-row flex-wrap gap-x-4 gap-y-1 sm:mb-2 md:mt-2 md:mb-6 md:gap-x-8 md:gap-y-3">
                 {skill.skills.map(({ icon, name, color }, j) => {

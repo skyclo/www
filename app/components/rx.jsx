@@ -17,11 +17,13 @@ import {
     Inkscape,
     Javascript,
     Jest,
+    Linux,
     Microsoftoffice,
     Mongodb,
     Nextdotjs,
     Openjdk,
     Postgresql,
+    Qemu,
     ReactJs,
     Remix,
     Sqlite,
@@ -264,6 +266,64 @@ export default {
                 name: "Microsoft",
                 image: "/images/microsoft.jpeg",
             },
+        },
+    ],
+    projects: [
+        {
+            name: "Ideoxan",
+            date: {
+                from: "2020-03",
+                to: "Present",
+            },
+            link: "https://ideoxan.com",
+            image: "/images/ideoxan.png",
+            description: [
+                "SaaS Edtech platform offering free content for aspiring programmers at K-12 institutions",
+                "Written in Remix.run (React) and uses Supabase. Hosted on Cloudflare Workers and AWS.",
+                "Maintaining an open-source repository for website with over 30 stars and a dozen contributors",
+            ],
+            stack: [
+                { icon: ReactJs, name: "React", color: "#61DAFB" },
+                { icon: Javascript, name: "JavaScript", color: "#F7DF1E" },
+                { icon: Remix, name: "Remix", color: "#FFFFFF" },
+                { icon: Supabase, name: "Supabase", color: "#FFFFFF" },
+                { icon: Cloudflare, name: "Cloudflare", color: "#F38020" },
+                { icon: Amazonaws, name: "AWS", color: "#FF9900" },
+            ],
+        },
+        {
+            name: "WebEmu",
+            date: {
+                from: "2021-08",
+                to: "Present",
+            },
+            link: null,
+            image: "/images/webemu.png",
+            description: [
+                "An emerging web technology that bridges the gap between the browser and virtualization",
+                "Written in JavaScript and WebAssembly",
+            ],
+            stack: [
+                { icon: Javascript, name: "JavaScript", color: "#F7DF1E" },
+                { icon: Webassembly, name: "WebAssembly", color: "#654FF0" },
+                { icon: Linux, name: "Linux", color: "#FFFFFF" },
+                { icon: Qemu, name: "QEMU", color: "#FF6600" },
+            ],
+        },
+        {
+            name: "node-scdl",
+            date: {
+                from: "2020-04",
+                to: "2021-05",
+            },
+            link: "https://github.com/skyclo/node-scdl",
+            image: "/images/node-scdl.png",
+            description: [
+                "An easy to use, minimal dependency Soundcloud song downloader.",
+                "Makes use of the SoundcloudAPI v1 and fetches the song based on provided metadata",
+                "Over 600 downloads on NPM",
+            ],
+            stack: [{ icon: Javascript, name: "JavaScript", color: "#F7DF1E" }],
         },
     ],
 }

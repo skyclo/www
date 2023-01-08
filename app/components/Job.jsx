@@ -3,7 +3,7 @@ import dateLength from "~/utils/dateLength"
 
 export default function Job({ item: job, ...props }) {
     return (
-        <div className="w-full" {...props}>
+        <div className="" {...props}>
             <h3 className="group-header">{job.role}</h3>
             <div className="group-subheader group-divider">
                 {toMonthYearString(job.date.from)} - {toMonthYearString(job.date.to)}
