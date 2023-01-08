@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react"
+import Certification from "~/components/Certification"
 import Institution from "~/components/Institution"
 import Intro from "~/components/Intro"
 import Job from "~/components/Job"
@@ -25,6 +26,12 @@ let sections = [
         id: "experience",
         header: "Work Experience",
         mappedComponent: Job,
+    },
+    {
+        id: "certifications",
+        header: "Certifications",
+        grid: true,
+        mappedComponent: Certification,
     },
     {
         id: "contact",
@@ -115,8 +122,6 @@ export default function Index() {
                     <section
                         key={i}
                         id={section.id}
-                        bg={section?.bg}
-                        header={section?.header}
                         className={
                             "flex h-screen w-screen snap-start snap-always flex-col items-center justify-center " +
                             (section?.bg === "gradient-in"
@@ -130,8 +135,14 @@ export default function Index() {
                                 {section?.header}
                             </h2>
                         )}
-                        <div className="mx-auto flex flex-col px-4 md:px-12 lg:max-w-7xl lg:px-0">
-                            {section?.children && <section.children />}
+                        {section?.children && <section.children />}
+                        <div
+                            className={
+                                "mt-3 flex px-4 md:mt-4 md:px-12 lg:mt-6 lg:max-w-7xl lg:px-0 " +
+                                (section?.grid
+                                    ? "grid auto-cols-fr grid-flow-row auto-rows-fr grid-cols-1 gap-x-4 gap-y-4 md:grid-cols-2"
+                                    : "flex flex-col space-y-3 md:space-y-6 lg:space-y-8")
+                            }>
                             {section?.mappedComponent &&
                                 rxJSON?.[section?.id]?.map((item, i) => {
                                     if (!item) return null

@@ -59,7 +59,7 @@
     }
 
     .group-header {
-        @apply mt-3 w-full md:mt-6 lg:mt-8;
+        @apply w-full;
     }
 
     .group-subheader {

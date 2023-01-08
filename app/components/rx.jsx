@@ -232,4 +232,38 @@ export default {
             ],
         },
     ],
+    certifications: [
+        {
+            name: "Adobe Certified Associate",
+            date: "2020-03",
+            organization: {
+                name: "Adobe",
+                image: "/images/adobe.jpeg",
+            },
+        },
+        {
+            name: "Modeling and Simulation Certification",
+            date: "2021-03",
+            organization: {
+                name: "National Center for Simulation",
+                image: "/images/ncs.jpeg",
+            },
+        },
+        {
+            name: "IC3 Digital Literacy Certification",
+            date: "2016-03",
+            organization: {
+                name: "Certiport",
+                image: "/images/certiport.jpeg",
+            },
+        },
+        {
+            name: "Office 365 Certified Associate",
+            date: "2016-03",
+            organization: {
+                name: "Microsoft",
+                image: "/images/microsoft.jpeg",
+            },
+        },
+    ],
 }
