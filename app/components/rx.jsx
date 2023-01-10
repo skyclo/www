@@ -508,7 +508,7 @@ export default [
                 },
                 {
                     name: "Twitter",
-                    link: "https://twitter.com/skyclo",
+                    link: "https://twitter.com/skyclo_",
                     icon: {
                         name: Twitter,
                         color: "#1DA1F2",
