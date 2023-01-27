@@ -24,7 +24,7 @@
     },
     "devDependencies": {
         "@cloudflare/workers-types": "^3.18.0",
-        "@remix-run/dev": "^1.9.0",
+        "@remix-run/dev": "^1.11.1",
         "@remix-run/eslint-config": "^1.10.1",
         "autoprefixer": "^10.4.13",
         "concurrently": "^7.6.0",
