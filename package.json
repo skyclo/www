@@ -16,7 +16,7 @@
         "@icons-pack/react-simple-icons": "^5.11.0",
         "@remix-run/cloudflare": "^1.12.0",
         "@remix-run/cloudflare-pages": "^1.11.1",
-        "@remix-run/react": "^1.11.1",
+        "@remix-run/react": "^1.12.0",
         "cross-env": "^7.0.3",
         "lucide-react": "^0.108.0",
         "react": "^18.2.0",
