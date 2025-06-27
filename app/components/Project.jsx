@@ -6,7 +6,7 @@ export default function Project({ item: project, ...props }) {
     return (
         <div className="flex w-full flex-grow flex-row rounded-md px-4 py-4 ring-1 ring-gray-50 ring-opacity-20 hover:ring-opacity-30">
             {project?.link ? (
-                <a href={project.link}>
+                <a href={project.link} className="flex-shrink-0">
                     <img
                         src={project?.image}
                         alt={project?.name + " Logo"}
@@ -20,7 +20,7 @@ export default function Project({ item: project, ...props }) {
                     className="h-12 w-12 flex-shrink-0 rounded-md"
                 />
             )}
-            <div className="ml-4 flex w-full flex-col">
+            <div className="ml-4 flex w-full flex-shrink flex-col">
                 <div className="flex w-full flex-row">
                     <div className="flex flex-col">
                         {project?.link ? (
