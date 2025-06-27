@@ -108,17 +108,17 @@ export default function Index() {
                     ))}
                 </div>
             </nav>
-            <main className="glowback h-screen w-screen snap-y snap-mandatory overflow-hidden bg-black bg-no-repeat">
+            <main className="glowback h-screen w-screen snap-y snap-mandatory bg-black bg-no-repeat">
                 {rx.map((section, i) => (
                     <section
                         key={i}
                         id={section?.id}
                         className={
-                            "flex h-screen w-screen snap-start snap-always flex-col items-center justify-center " +
+                            "flex min-h-screen w-screen snap-start snap-always flex-col items-center justify-center " +
                             (section?.styles?.bg === "gradient-in"
                                 ? "bg-gradient-to-b from-black/0 to-black/100"
                                 : section?.styles?.bg === "gradient-out"
-                                ? "bg-gradient-to-t from-black/0 to-black/100"
+                                ? "bg-black"
                                 : "bg-black")
                         }>
                         {section?.data?.header && (
@@ -129,10 +129,10 @@ export default function Index() {
                         {section?.children && <section.children data={section?.data} />}
                         <div
                             className={
-                                "mt-3 px-4 md:mt-4 md:px-12 lg:mt-6 2xl:max-w-7xl 2xl:px-0 " +
+                                "mt-3 px-4 md:mx-12 md:mt-4 md:px-6 lg:mt-6 2xl:max-w-7xl 2xl:px-0 " +
                                 (section?.styles?.grid
                                     ? "grid auto-cols-fr grid-flow-row auto-rows-fr grid-cols-1 gap-x-4 gap-y-4 md:grid-cols-2 "
-                                    : "flex flex-col space-y-3 md:space-y-6 lg:space-y-8 ")
+                                    : "flex flex-col space-y-3 md:space-y-4 lg:space-y-8 ")
                             }>
                             {section?.mappedComponent &&
                                 (section?.data?.[section?.id] || section?.data?.["items"])?.map(

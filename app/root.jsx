@@ -65,7 +65,7 @@ export default function App() {
                     }}
                 />
             </head>
-            <body>
+            <body className="bg-black">
                 <Outlet />
                 <ScrollRestoration />
                 <Scripts />
