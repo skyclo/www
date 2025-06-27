@@ -9,7 +9,7 @@
         "dev:css": "tailwindcss -w -i ./app/styles/tailwind.css -o ./app/styles/app.css",
         "dev": "concurrently \"npm run dev:css\" \"npm run dev:remix\" \"npm run dev:wrangler\"",
         "start": "cross-env NODE_ENV=production npm run wrangler",
-        "wrangler": "wrangler pages dev ./public",
+        "wrangler": "wrangler pages dev --compatibility-date=2023-02-11 ./public",
         "format": "prettier --write ."
     },
     "dependencies": {
@@ -18,7 +18,7 @@
         "@remix-run/cloudflare-pages": "^1.11.1",
         "@remix-run/react": "^1.12.0",
         "cross-env": "^7.0.3",
-        "lucide-react": "^0.108.0",
+        "lucide-react": "^0.523.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0"
     },
