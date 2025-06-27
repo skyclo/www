@@ -2,7 +2,7 @@ export default function Skill({ item: skillGroup, ...props }) {
     return (
         <div className="" {...props}>
             <h3 className="group-header group-divider text-left">{skillGroup?.title}</h3>
-            <div className="mt-1 flex flex-row flex-wrap gap-x-4 gap-y-1 sm:mb-2 md:mt-2 md:mb-6 md:gap-x-8 md:gap-y-3">
+            <div className="mt-1 flex flex-row flex-wrap gap-x-4 gap-y-1 sm:mb-2 md:mt-2 md:mb-4 md:gap-x-8 md:gap-y-3">
                 {skillGroup?.items?.map(({ icon, name, color }, j) => {
                     if (!icon || !name) return null
                     const Icon = icon
