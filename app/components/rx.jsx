@@ -12,18 +12,22 @@ import {
     Git,
     Github,
     Googlecloud,
-    Heroku,
     Html5,
-    Inkscape,
     Javascript,
     Jest,
+    Kubernetes,
     Linkedin,
     Linux,
     Microsoftoffice,
+    Microsoftsqlserver,
     Mongodb,
+    Mysql,
     Nextdotjs,
     Openjdk,
+    Oracle,
     Postgresql,
+    Proxmox,
+    Python,
     Qemu,
     ReactJs,
     Remix,
@@ -54,7 +58,7 @@ export default [
         data: {
             header: null,
             name: "Conor Daly",
-            tagline: "Programmer, Designer, Entrepreneur",
+            tagline: "Welcome to my digital portfolio",
             items: [
                 {
                     platform: "Github",
@@ -94,7 +98,7 @@ export default [
                         { icon: Nextdotjs, name: "Next.js", color: "#FFFFFF" },
                         {
                             icon: Webassembly,
-                            name: "WebAssembly (WASM)",
+                            name: "WebAssembly",
                             color: "#654FF0",
                         },
                     ],
@@ -106,6 +110,7 @@ export default [
                         { icon: Openjdk, name: "Java", color: "#FFFFFF" },
                         { icon: Csharp, name: "C#", color: "#239120" },
                         { icon: Typescript, name: "Typescript", color: "#3178C6" },
+                        { icon: Python, name: "Python", color: "#3776AB" },
                     ],
                 },
                 {
@@ -116,6 +121,8 @@ export default [
                         { icon: Sqlite, name: "SQLite", color: "#029ce3" },
                         { icon: Firebase, name: "Firebase", color: "#FFCA28" },
                         { icon: Supabase, name: "Supabase", color: "#3ECF8E" },
+                        { icon: Mysql, name: "MySQL", color: "#4479A1" },
+                        { icon: Microsoftsqlserver, name: "MSSQL", color: "#CC2927" },
                     ],
                 },
                 {
@@ -124,6 +131,7 @@ export default [
                         { icon: Git, name: "Git", color: "#F05032" },
                         { icon: Circleci, name: "CI and QA", color: "#cbcbcb" },
                         { icon: Docker, name: "Docker", color: "#2496ED" },
+                        { icon: Kubernetes, name: "Kubernetes", color: "#326CE5" },
                         { icon: Jest, name: "Testing", color: "#C21325" },
                     ],
                 },
@@ -137,7 +145,7 @@ export default [
                             color: "#FF9900",
                         },
                         { icon: Googlecloud, name: "Google Cloud", color: "#4285F4" },
-                        { icon: Heroku, name: "Heroku", color: "#8628fc" },
+                        { icon: Oracle, name: "Oracle Cloud", color: "#F80000" },
                     ],
                 },
                 {
@@ -154,7 +162,7 @@ export default [
                             color: "#D83B01",
                         },
                         { icon: Adobe, name: "Adobe Creative Suite", color: "#FF0000" },
-                        { icon: Inkscape, name: "Inkscape", color: "#ecebeb" },
+                        { icon: Proxmox, name: "Server Administration", color: "#8B0000" },
                     ],
                 },
             ],
@@ -169,10 +177,51 @@ export default [
             header: "Projects",
             projects: [
                 {
+                    name: "Agentic Toolkit for Heuristic Enhanced Network Analysis",
+                    date: {
+                        from: "2022-04",
+                        to: "Present",
+                    },
+                    link: null,
+                    image: "/images/athena.png",
+                    description: [
+                        "An intelligent data aggregation and big data analysis agentic platform",
+                        "Developed to work at scale on a hyperconverged private cloud",
+                        "Leverages technologies like Kubernetes, vLLM, RoCE",
+                        "Written in TypeScript and Python",
+                        "Powered by LLaMA 3, LangChain, ArcadeDB, and vLLM",
+                    ],
+                    stack: [
+                        { icon: Typescript, name: "TypeScript", color: "#3178C6" },
+                        { icon: Python, name: "Python", color: "#3776AB" },
+                        { icon: Kubernetes, name: "Kubernetes", color: "#326CE5" },
+                    ],
+                },
+                {
+                    name: "WebEmu",
+                    date: {
+                        from: "2021-08",
+                        to: "Present",
+                    },
+                    link: null,
+                    image: "/images/webemu.png",
+                    description: [
+                        "A web-based containerized Linux emulator that bridges the gap between the browser and virtualization",
+                        "Written in JavaScript, C, and WebAssembly",
+                    ],
+                    stack: [
+                        { icon: Javascript, name: "JavaScript", color: "#F7DF1E" },
+                        { icon: C, name: "C", color: "#A8B9CC" },
+                        { icon: Webassembly, name: "WebAssembly", color: "#654FF0" },
+                        { icon: Linux, name: "Linux", color: "#FFFFFF" },
+                        { icon: Qemu, name: "QEMU", color: "#FF6600" },
+                    ],
+                },
+                {
                     name: "Ideoxan",
                     date: {
                         from: "2020-03",
-                        to: "Present",
+                        to: "2023-10",
                     },
                     link: "https://ideoxan.com",
                     image: "/images/ideoxan.png",
@@ -190,26 +239,7 @@ export default [
                         { icon: Amazonaws, name: "AWS", color: "#FF9900" },
                     ],
                 },
-                {
-                    name: "WebEmu",
-                    date: {
-                        from: "2021-08",
-                        to: "Present",
-                    },
-                    link: null,
-                    image: "/images/webemu.png",
-                    description: [
-                        "An emerging web technology that bridges the gap between the browser and virtualization",
-                        "Written in JavaScript and WebAssembly",
-                    ],
-                    stack: [
-                        { icon: Javascript, name: "JavaScript", color: "#F7DF1E" },
-                        { icon: Webassembly, name: "WebAssembly", color: "#654FF0" },
-                        { icon: Linux, name: "Linux", color: "#FFFFFF" },
-                        { icon: Qemu, name: "QEMU", color: "#FF6600" },
-                    ],
-                },
-                {
+                /* {
                     name: "node-scdl",
                     date: {
                         from: "2020-04",
@@ -223,7 +253,7 @@ export default [
                         "Over 600 downloads on NPM",
                     ],
                     stack: [{ icon: Javascript, name: "JavaScript", color: "#F7DF1E" }],
-                },
+                }, */
             ],
         },
     },
@@ -236,7 +266,23 @@ export default [
             header: "Experience",
             jobs: [
                 {
-                    role: "Junior Software Developer (Techranger)",
+                    role: "CWEP Software Engineer",
+                    date: {
+                        from: "2023-06",
+                        to: "Present",
+                    },
+                    location: "Orlando, FL",
+                    company: "Lockheed Martin",
+                    description: [
+                        "Created a new internal tool for generating powerpoint presentations for 30 programs",
+                        "Added 7 features to 4 internal program support and contract management tools",
+                        "Overhauled legacy build systems to use modern CI/CD practices for 5 internal tools",
+                        "Introduced a new local linux-based (WSL) development workflow, reducing local build times by over 80%",
+                        "Created a web directory for 6 internal web applications to be used by over 20 employees",
+                    ],
+                },
+                {
+                    role: "Techranger SWE",
                     date: {
                         from: "2021-10",
                         to: "2022-03",
@@ -251,7 +297,7 @@ export default [
                 {
                     role: "Freelance Developer",
                     date: {
-                        from: "2018",
+                        from: "2017",
                         to: "2019",
                     },
                     location: "Orlando, FL",
@@ -261,7 +307,7 @@ export default [
                         "Completed over 14 contracts for website design, software development, OSINT research, etc.",
                     ],
                 },
-                {
+                /* {
                     role: "Summer Intern",
                     date: {
                         from: "2019-06",
@@ -273,7 +319,7 @@ export default [
                         "Maintained critical computer services and designed mockups for a company website redesign",
                         "Worked directly with 4 clients to coordinate projects and created a final project with fellow interns",
                     ],
-                },
+                }, */
             ],
         },
     },
@@ -292,22 +338,21 @@ export default [
                         to: "Present",
                     },
                     location: "Orlando, FL",
-                    degree: "Computer Science (B.S.)",
+                    degree: "Major: Computer Science (B.S.)",
                     gpa: null,
                     courses: [
-                        { name: "Computer Organization", code: "CDA 3103" },
-                        { name: "Intro to C", code: "COP 3223C" },
-                        { name: "Security in Computing", code: "CIS 3360" },
-                        { name: "Intro to Discrete Structures", code: "COT 3100" },
-                        {
-                            name: "Object Oriented Programming (Java)",
-                            code: "COP 3330",
-                        },
-                        { name: "Computer Science I (C)", code: "COP 3502" },
-                        { name: "Computer Science II (Java)", code: "COP 3503" },
+                        { name: "Artificial Intelligence", code: "CAP 4360" },
+                        { name: "Creativity and Entrepreneurship", code: "ENT 3613" },
+                        { name: "Secure Operating Systems and Administration", code: "CIS 4361" },
+                        { name: "Parallel and Distributed Processing", code: "COP 4520" },
+                        { name: "Digital Forensics", code: "CIS 4203C" },
+                        { name: "Database Systems", code: "COP 4710" },
+                        { name: "Cyber Defense Analysis", code: "CIS 4364" },
                     ],
                     clubs: [
                         { org: "UCF Excel Program", role: "Member" },
+                        { org: "UCF KnightHacks", role: "Member" },
+                        { org: "UCF SPCB", role: "Member" },
                         {
                             org: "UCF KnightHacks",
                             role: "Fall 2021 Team #12 Project Lead",
@@ -315,7 +360,7 @@ export default [
                         { org: "UCF Model UN", role: "Former Member" },
                     ],
                 },
-                {
+                /* {
                     name: "High School",
                     date: {
                         from: "2017-08",
@@ -345,7 +390,7 @@ export default [
                         { org: "Science National Honors Society", role: "Member" },
                         { org: "Key Club", role: "Member" },
                     ],
-                },
+                },*/
             ],
         },
     },
@@ -359,6 +404,14 @@ export default [
         data: {
             header: "Certifications",
             certifications: [
+                {
+                    name: "CompTIA CyberDefense Pro",
+                    date: "2024-12",
+                    organization: {
+                        name: "CompTIA",
+                        image: "/images/comptia.jpeg",
+                    },
+                },
                 {
                     name: "Modeling and Simulation Certification",
                     date: "2021-03",
